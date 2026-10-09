@@ -47,12 +47,14 @@ export const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo & Main Nav */}
           <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-navy via-brand-indigo to-brand-teal flex items-center justify-center text-white shadow-md shadow-indigo-100 group-hover:scale-105 transition-transform">
-                <Briefcase className="w-5 h-5 text-white" />
-              </div>
+            <Link to="/" className="flex items-center gap-2.5 group">
+              <img
+                src="/logo.png"
+                alt="SkillBridge Logo"
+                className="w-9 h-9 object-contain rounded-xl group-hover:scale-105 transition-transform drop-shadow-sm"
+              />
               <div>
-                <span className="text-xl font-bold tracking-tight text-brand-navy">
+                <span className="text-xl font-extrabold tracking-tight text-brand-navy">
                   Skill<span className="text-brand-indigo">Bridge</span>
                 </span>
                 <span className="hidden sm:inline-block ml-2 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-50 text-brand-indigo border border-indigo-100">

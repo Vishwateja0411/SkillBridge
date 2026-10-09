@@ -36,10 +36,12 @@ export const RegisterPage: React.FC = () => {
   return (
     <div className="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg w-full space-y-8 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl">
-        <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-indigo to-brand-teal flex items-center justify-center text-white mx-auto shadow-md">
-            <Briefcase className="w-6 h-6" />
-          </div>
+        <div className="text-center space-y-3">
+          <img
+            src="/logo.png"
+            alt="SkillBridge Logo"
+            className="w-14 h-14 object-contain rounded-2xl mx-auto shadow-sm"
+          />
           <h2 className="text-2xl font-extrabold text-brand-navy">Create Your SkillBridge Account</h2>
           <p className="text-xs text-slate-500">Join our two-sided AI talent marketplace</p>
         </div>

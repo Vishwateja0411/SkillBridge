@@ -115,7 +115,7 @@ export const DashboardLayout: React.FC = () => {
       {/* Mobile Topbar */}
       <div className="md:hidden bg-brand-navy text-white px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <Briefcase className="w-5 h-5 text-brand-teal" />
+          <img src="/logo.png" alt="SkillBridge" className="w-6 h-6 object-contain rounded-md" />
           <span className="font-bold">SkillBridge</span>
         </Link>
         <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-1 text-slate-200">
@@ -132,10 +132,12 @@ export const DashboardLayout: React.FC = () => {
         <div>
           {/* Logo */}
           <div className="p-6 border-b border-slate-800 flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-indigo to-brand-teal flex items-center justify-center text-white shadow-md">
-                <Briefcase className="w-5 h-5 text-white" />
-              </div>
+            <Link to="/" className="flex items-center gap-2.5 group">
+              <img
+                src="/logo.png"
+                alt="SkillBridge Logo"
+                className="w-9 h-9 object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform"
+              />
               <div>
                 <div className="font-bold text-white text-base leading-tight">SkillBridge</div>
                 <div className="text-[11px] text-brand-teal capitalize font-medium">{user.role} Workspace</div>
