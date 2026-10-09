@@ -1,0 +1,815 @@
+{
+  "users": [
+    {
+      "id": "user-business-1",
+      "name": "Alex Chen",
+      "email": "client@skillbridge.io",
+      "passwordHash": "$2a$10$CBrjpWQZnyKO3Wsq7rk9A.xWFT3Gn.xHVxfSnFCjoazKZ3fbmvhBu",
+      "role": "business",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      "isVerified": true,
+      "createdAt": "2025-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "user-freelancer-1",
+      "name": "Sarah Jenkins",
+      "email": "sarah@skillbridge.io",
+      "passwordHash": "$2a$10$CBrjpWQZnyKO3Wsq7rk9A.xWFT3Gn.xHVxfSnFCjoazKZ3fbmvhBu",
+      "role": "freelancer",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+      "isVerified": true,
+      "createdAt": "2025-10-15T00:00:00.000Z"
+    },
+    {
+      "id": "user-freelancer-2",
+      "name": "Elena Rostova",
+      "email": "elena@skillbridge.io",
+      "passwordHash": "$2a$10$CBrjpWQZnyKO3Wsq7rk9A.xWFT3Gn.xHVxfSnFCjoazKZ3fbmvhBu",
+      "role": "freelancer",
+      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
+      "isVerified": true,
+      "createdAt": "2025-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "user-freelancer-3",
+      "name": "Marcus Vance",
+      "email": "marcus@skillbridge.io",
+      "passwordHash": "$2a$10$CBrjpWQZnyKO3Wsq7rk9A.xWFT3Gn.xHVxfSnFCjoazKZ3fbmvhBu",
+      "role": "freelancer",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+      "isVerified": true,
+      "createdAt": "2025-12-05T00:00:00.000Z"
+    },
+    {
+      "id": "user-admin-1",
+      "name": "SkillBridge Admin",
+      "email": "admin@skillbridge.io",
+      "passwordHash": "$2a$10$eMDndvu2Q3nMfIv7Vi9X..9bJM758N.8TH8SZHkWslrqsjqy48gvi",
+      "role": "admin",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80",
+      "isVerified": true,
+      "createdAt": "2025-01-01T00:00:00.000Z"
+    }
+  ],
+  "freelancerProfiles": [
+    {
+      "id": "fp-1",
+      "userId": "user-freelancer-1",
+      "headline": "Senior Full-Stack Engineer | React, Node.js & Cloud Architect",
+      "bio": "Ex-Stripe senior engineer with 8+ years building resilient web applications, complex dashboards, and scalable distributed microservices. Specialized in TypeScript, modern React, Node.js, and high-performance system designs.",
+      "skills": [
+        {
+          "name": "React",
+          "level": "expert",
+          "yearsExperience": 7
+        },
+        {
+          "name": "TypeScript",
+          "level": "expert",
+          "yearsExperience": 6
+        },
+        {
+          "name": "Node.js",
+          "level": "expert",
+          "yearsExperience": 8
+        },
+        {
+          "name": "Next.js",
+          "level": "expert",
+          "yearsExperience": 5
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": "expert",
+          "yearsExperience": 4
+        },
+        {
+          "name": "MongoDB",
+          "level": "intermediate",
+          "yearsExperience": 5
+        },
+        {
+          "name": "PostgreSQL",
+          "level": "expert",
+          "yearsExperience": 6
+        },
+        {
+          "name": "AWS",
+          "level": "intermediate",
+          "yearsExperience": 4
+        }
+      ],
+      "hourlyRate": 85,
+      "experienceLevel": "expert",
+      "availability": "full_time",
+      "rating": 5,
+      "reviewCount": 2,
+      "completedProjectsCount": 34,
+      "location": "Austin, TX",
+      "portfolio": [
+        {
+          "id": "port-1",
+          "title": "Apex Financial Intelligence Hub",
+          "description": "Real-time portfolio management platform with interactive trading charts, live socket streaming, and automated tax reporting for 50k+ daily users.",
+          "category": "Web Development & FinTech",
+          "skills": [
+            "React",
+            "TypeScript",
+            "Node.js",
+            "Socket.io",
+            "Tailwind CSS"
+          ],
+          "projectUrl": "https://github.com/skillbridge-demo/apex-finance",
+          "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=80",
+          "completedAt": "2025-08-20"
+        },
+        {
+          "id": "port-2",
+          "title": "OmniStore High-Conversion E-Commerce Platform",
+          "description": "Complete headless multi-vendor marketplace with Stripe Connect integration, sub-second search indexing, and real-time inventory synchronization.",
+          "category": "E-Commerce",
+          "skills": [
+            "React",
+            "Next.js",
+            "PostgreSQL",
+            "Stripe",
+            "Node.js"
+          ],
+          "projectUrl": "https://github.com/skillbridge-demo/omnistore",
+          "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80",
+          "completedAt": "2025-11-14"
+        },
+        {
+          "id": "port-3",
+          "title": "HealthPulse Patient Telehealth App",
+          "description": "HIPAA-compliant video consultation and clinical records portal featuring calendar scheduling and automated prescription management.",
+          "category": "Healthcare",
+          "skills": [
+            "React",
+            "TypeScript",
+            "WebRTC",
+            "Tailwind CSS"
+          ],
+          "projectUrl": "https://github.com/skillbridge-demo/healthpulse",
+          "imageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=80",
+          "completedAt": "2025-06-10"
+        }
+      ],
+      "languages": [
+        "English (Native)",
+        "Spanish (Conversational)"
+      ],
+      "certifications": [
+        "AWS Certified Solutions Architect",
+        "Meta Certified Senior Front-End Developer"
+      ],
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "fp-2",
+      "userId": "user-freelancer-2",
+      "headline": "Lead Product Designer & Design Systems Architect (Figma / UI / UX)",
+      "bio": "Crafting intuitive digital experiences that convert. 6+ years designing B2B SaaS platforms, mobile consumer apps, and accessible component design systems. Obsessed with micro-interactions, typography, and clean information architecture.",
+      "skills": [
+        {
+          "name": "UI/UX Design",
+          "level": "expert",
+          "yearsExperience": 6
+        },
+        {
+          "name": "Figma",
+          "level": "expert",
+          "yearsExperience": 6
+        },
+        {
+          "name": "Design Systems",
+          "level": "expert",
+          "yearsExperience": 5
+        },
+        {
+          "name": "Prototyping",
+          "level": "expert",
+          "yearsExperience": 5
+        },
+        {
+          "name": "User Research",
+          "level": "intermediate",
+          "yearsExperience": 4
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": "intermediate",
+          "yearsExperience": 3
+        }
+      ],
+      "hourlyRate": 75,
+      "experienceLevel": "expert",
+      "availability": "full_time",
+      "rating": 5,
+      "reviewCount": 22,
+      "completedProjectsCount": 27,
+      "location": "Berlin, Germany",
+      "portfolio": [
+        {
+          "id": "port-4",
+          "title": "FlowState Project Management UI Suite",
+          "description": "Comprehensive 120-screen SaaS design system with dark mode tokens, kanban interaction prototypes, and user accessibility audit.",
+          "category": "UI/UX Design",
+          "skills": [
+            "Figma",
+            "UI/UX Design",
+            "Design Systems"
+          ],
+          "imageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&auto=format&fit=crop&q=80",
+          "completedAt": "2025-09-12"
+        }
+      ],
+      "languages": [
+        "English (Fluent)",
+        "German (Native)"
+      ],
+      "certifications": [
+        "Nielsen Norman Group UX Master Certified"
+      ],
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "fp-3",
+      "userId": "user-freelancer-3",
+      "headline": "DevOps & Cloud Engineer | Kubernetes, Terraform, AWS & CI/CD",
+      "bio": "Site Reliability and Cloud Infrastructure engineer with 7 years experience designing secure, high-uptime cloud setups. Automated Docker/K8s pipelines, SOC2 compliance infrastructure, and observability stacks.",
+      "skills": [
+        {
+          "name": "AWS",
+          "level": "expert",
+          "yearsExperience": 7
+        },
+        {
+          "name": "Kubernetes",
+          "level": "expert",
+          "yearsExperience": 5
+        },
+        {
+          "name": "Docker",
+          "level": "expert",
+          "yearsExperience": 6
+        },
+        {
+          "name": "Terraform",
+          "level": "expert",
+          "yearsExperience": 5
+        },
+        {
+          "name": "CI/CD Pipelines",
+          "level": "expert",
+          "yearsExperience": 6
+        },
+        {
+          "name": "Node.js",
+          "level": "intermediate",
+          "yearsExperience": 4
+        }
+      ],
+      "hourlyRate": 90,
+      "experienceLevel": "expert",
+      "availability": "part_time",
+      "rating": 4.88,
+      "reviewCount": 15,
+      "completedProjectsCount": 19,
+      "location": "Seattle, WA",
+      "portfolio": [
+        {
+          "id": "port-5",
+          "title": "Zero-Downtime EKS Infrastructure Pipeline",
+          "description": "Multi-region AWS EKS setup supporting auto-scaling, GitOps via ArgoCD, and automated canary deployments for 1M+ daily API hits.",
+          "category": "DevOps & Cloud",
+          "skills": [
+            "AWS",
+            "Kubernetes",
+            "Terraform",
+            "Docker"
+          ],
+          "imageUrl": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=600&auto=format&fit=crop&q=80",
+          "completedAt": "2025-10-01"
+        }
+      ],
+      "languages": [
+        "English (Native)"
+      ],
+      "certifications": [
+        "AWS Certified DevOps Engineer - Professional",
+        "Certified Kubernetes Administrator (CKA)"
+      ],
+      "verificationStatus": "verified"
+    }
+  ],
+  "businessProfiles": [
+    {
+      "id": "bp-1",
+      "userId": "user-business-1",
+      "companyName": "TechVentures AI",
+      "logo": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&auto=format&fit=crop&q=80",
+      "industry": "Enterprise Software & Artificial Intelligence",
+      "companySize": "25-50 employees",
+      "website": "https://techventures.ai",
+      "description": "TechVentures builds next-generation predictive intelligence platforms and enterprise cloud applications for Fortune 500 customers.",
+      "location": "San Francisco, CA (Remote-First)",
+      "verified": true,
+      "totalSpent": 48500,
+      "activeContractsCount": 2
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "businessId": "bp-1",
+      "title": "AI Analytics Dashboard & Real-Time Customer Insights Hub",
+      "description": "We are seeking an experienced Full-Stack Engineer to architect and build our flagship analytics portal. The project requires integrating complex data visualizations (charts, heatmaps, cohort tables), real-time WebSocket feeds for user telemetry, and a clean responsive UI built in React + TypeScript. The backend will interface with our predictive inference REST endpoints and require clean state management, modular components, and bulletproof security.",
+      "category": "Web Development",
+      "requiredSkills": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Tailwind CSS"
+      ],
+      "experienceLevel": "expert",
+      "budgetType": "fixed",
+      "budgetMin": 4000,
+      "budgetMax": 5000,
+      "duration": "4 weeks",
+      "deadline": "2026-11-30",
+      "workArrangement": "remote",
+      "status": "in_progress",
+      "proposalsCount": 3,
+      "createdAt": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "id": "proj-2",
+      "businessId": "bp-1",
+      "title": "Modern Mobile-First E-Commerce Storefront with Stripe Checkout",
+      "description": "Looking for a senior frontend developer to build an ultra-fast, high-converting digital product store. Needs responsive product grids, category filtering, cart drawer with optimistic updates, Stripe checkout integration, and 100/100 Lighthouse performance scores.",
+      "category": "E-Commerce",
+      "requiredSkills": [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "TypeScript"
+      ],
+      "experienceLevel": "intermediate",
+      "budgetType": "fixed",
+      "budgetMin": 2500,
+      "budgetMax": 3500,
+      "duration": "3 weeks",
+      "deadline": "2026-12-15",
+      "workArrangement": "remote",
+      "status": "published",
+      "proposalsCount": 2,
+      "createdAt": "2026-09-20T00:00:00.000Z"
+    },
+    {
+      "id": "proj-3",
+      "businessId": "bp-1",
+      "title": "Design System & Component Library in Figma for SaaS Suite",
+      "description": "We need a seasoned Product Designer to organize, standardize, and expand our Figma design system. You will audit 4 existing web apps, establish coherent color palettes, typography scales, elevation tokens, form controls, and interactive component variants with autolayout.",
+      "category": "UI/UX Design",
+      "requiredSkills": [
+        "Figma",
+        "UI/UX Design",
+        "Design Systems"
+      ],
+      "experienceLevel": "expert",
+      "budgetType": "fixed",
+      "budgetMin": 3000,
+      "budgetMax": 4200,
+      "duration": "3 weeks",
+      "deadline": "2026-11-20",
+      "workArrangement": "remote",
+      "status": "published",
+      "proposalsCount": 1,
+      "createdAt": "2026-10-01T00:00:00.000Z"
+    },
+    {
+      "id": "proj-4",
+      "businessId": "bp-1",
+      "title": "Kubernetes Cluster Hardening & Automated GitHub Actions CI/CD",
+      "description": "Seeking a senior DevOps engineer to audit our production Kubernetes deployment, implement Helm charts, set up Prometheus/Grafana monitoring dashboards, and create automated lint-test-build-deploy GitHub Action workflows.",
+      "category": "DevOps & Cloud",
+      "requiredSkills": [
+        "AWS",
+        "Kubernetes",
+        "Docker",
+        "CI/CD Pipelines"
+      ],
+      "experienceLevel": "expert",
+      "budgetType": "fixed",
+      "budgetMin": 3500,
+      "budgetMax": 4800,
+      "duration": "2 weeks",
+      "deadline": "2026-11-10",
+      "workArrangement": "remote",
+      "status": "published",
+      "proposalsCount": 1,
+      "createdAt": "2026-10-05T00:00:00.000Z"
+    }
+  ],
+  "proposals": [
+    {
+      "id": "prop-1",
+      "projectId": "proj-1",
+      "freelancerId": "fp-1",
+      "coverLetter": "Hi Alex! I reviewed the requirements for your AI Analytics Dashboard and customer telemetry hub. As former senior engineer at Stripe who built the Apex Financial Analytics Hub (live in my portfolio), I have deep hands-on expertise building real-time dashboard visualizations, WebSocket synchronization, and clean TypeScript component architectures.\n\nI can deliver this across 3 clear milestones with comprehensive testing, clean documentation, and automated CI.",
+      "proposedPrice": 4500,
+      "estimatedDuration": "28 days",
+      "milestoneProposals": [
+        {
+          "title": "System Architecture, Data Contracts & Wireframes",
+          "description": "Complete design specs, mock API endpoints, and navigation shell.",
+          "amount": 1200,
+          "estimatedDays": 7
+        },
+        {
+          "title": "Interactive Analytics Charts & Core Telemetry Feeds",
+          "description": "Visual charts, filter controls, data aggregation, and socket connections.",
+          "amount": 1800,
+          "estimatedDays": 12
+        },
+        {
+          "title": "Exporting, Security Audit, E2E Testing & Deployment",
+          "description": "CSV/PDF exports, rate limiting, responsive audit, and staging deployment.",
+          "amount": 1500,
+          "estimatedDays": 9
+        }
+      ],
+      "status": "accepted",
+      "createdAt": "2026-09-03T00:00:00.000Z",
+      "matchScore": {
+        "totalScore": 99,
+        "factors": {
+          "skillsMatch": {
+            "score": 100,
+            "weight": 35,
+            "matchedSkills": [
+              "react",
+              "typescript",
+              "node.js",
+              "tailwind css"
+            ],
+            "missingSkills": []
+          },
+          "experienceMatch": {
+            "score": 100,
+            "weight": 20,
+            "detail": "Perfect experience level match"
+          },
+          "portfolioSimilarity": {
+            "score": 100,
+            "weight": 20,
+            "matchedCount": 3,
+            "detail": "3 relevant past projects found matching required domains"
+          },
+          "ratingScore": {
+            "score": 99,
+            "weight": 10,
+            "rating": 4.95
+          },
+          "budgetCompatibility": {
+            "score": 90,
+            "weight": 10,
+            "detail": "Rate is compatible with project budget"
+          },
+          "availabilityScore": {
+            "score": 100,
+            "weight": 5,
+            "availability": "full_time"
+          }
+        },
+        "summary": "Matches 4 of 4 skills with 4.95★ rating and 3 similar portfolio items."
+      }
+    },
+    {
+      "id": "prop-2",
+      "projectId": "proj-2",
+      "freelancerId": "fp-1",
+      "coverLetter": "Hello TechVentures team! I would love to build your high-converting storefront. Having built OmniStore with sub-second page loads and seamless checkout, I can ensure optimal Lighthouse scores, mobile-first responsiveness, and rock-solid payment processing.",
+      "proposedPrice": 3000,
+      "estimatedDuration": "20 days",
+      "status": "shortlisted",
+      "createdAt": "2026-09-22T00:00:00.000Z",
+      "matchScore": {
+        "totalScore": 98,
+        "factors": {
+          "skillsMatch": {
+            "score": 100,
+            "weight": 35,
+            "matchedSkills": [
+              "react",
+              "next.js",
+              "tailwind css",
+              "typescript"
+            ],
+            "missingSkills": []
+          },
+          "experienceMatch": {
+            "score": 95,
+            "weight": 20,
+            "detail": "Exceeds requested experience level (expert)"
+          },
+          "portfolioSimilarity": {
+            "score": 100,
+            "weight": 20,
+            "matchedCount": 3,
+            "detail": "3 relevant past projects found matching required domains"
+          },
+          "ratingScore": {
+            "score": 99,
+            "weight": 10,
+            "rating": 4.95
+          },
+          "budgetCompatibility": {
+            "score": 90,
+            "weight": 10,
+            "detail": "Rate is compatible with project budget"
+          },
+          "availabilityScore": {
+            "score": 100,
+            "weight": 5,
+            "availability": "full_time"
+          }
+        },
+        "summary": "Matches 4 of 4 skills with 4.95★ rating and 3 similar portfolio items."
+      }
+    },
+    {
+      "id": "prop-3",
+      "projectId": "proj-3",
+      "freelancerId": "fp-2",
+      "coverLetter": "Hi! Elena here. With 6+ years specializing exclusively in Figma design tokens, auto-layout components, and enterprise SaaS design systems, I can unify your 4 apps into an effortless, scalable library that your engineers will love using.",
+      "proposedPrice": 3600,
+      "estimatedDuration": "21 days",
+      "status": "submitted",
+      "createdAt": "2026-10-02T00:00:00.000Z",
+      "matchScore": {
+        "totalScore": 86,
+        "factors": {
+          "skillsMatch": {
+            "score": 100,
+            "weight": 35,
+            "matchedSkills": [
+              "figma",
+              "ui/ux design",
+              "design systems"
+            ],
+            "missingSkills": []
+          },
+          "experienceMatch": {
+            "score": 100,
+            "weight": 20,
+            "detail": "Perfect experience level match"
+          },
+          "portfolioSimilarity": {
+            "score": 33,
+            "weight": 20,
+            "matchedCount": 1,
+            "detail": "1 relevant past projects found matching required domains"
+          },
+          "ratingScore": {
+            "score": 100,
+            "weight": 10,
+            "rating": 5
+          },
+          "budgetCompatibility": {
+            "score": 90,
+            "weight": 10,
+            "detail": "Rate is compatible with project budget"
+          },
+          "availabilityScore": {
+            "score": 100,
+            "weight": 5,
+            "availability": "full_time"
+          }
+        },
+        "summary": "Matches 3 of 3 skills with 5★ rating and 1 similar portfolio items."
+      }
+    },
+    {
+      "id": "prop-4",
+      "projectId": "proj-4",
+      "freelancerId": "fp-3",
+      "coverLetter": "Hi Alex. I have managed AWS EKS clusters at scale and built GitOps pipelines using GitHub Actions. I can harden your cluster security policies, implement Helm templates, and configure automated preview environments within 2 weeks.",
+      "proposedPrice": 4200,
+      "estimatedDuration": "14 days",
+      "status": "interview_requested",
+      "createdAt": "2026-10-06T00:00:00.000Z",
+      "matchScore": {
+        "totalScore": 84,
+        "factors": {
+          "skillsMatch": {
+            "score": 100,
+            "weight": 35,
+            "matchedSkills": [
+              "aws",
+              "kubernetes",
+              "docker",
+              "ci/cd pipelines"
+            ],
+            "missingSkills": []
+          },
+          "experienceMatch": {
+            "score": 100,
+            "weight": 20,
+            "detail": "Perfect experience level match"
+          },
+          "portfolioSimilarity": {
+            "score": 33,
+            "weight": 20,
+            "matchedCount": 1,
+            "detail": "1 relevant past projects found matching required domains"
+          },
+          "ratingScore": {
+            "score": 98,
+            "weight": 10,
+            "rating": 4.88
+          },
+          "budgetCompatibility": {
+            "score": 90,
+            "weight": 10,
+            "detail": "Rate is compatible with project budget"
+          },
+          "availabilityScore": {
+            "score": 80,
+            "weight": 5,
+            "availability": "part_time"
+          }
+        },
+        "summary": "Matches 4 of 4 skills with 4.88★ rating and 1 similar portfolio items."
+      }
+    }
+  ],
+  "contracts": [
+    {
+      "id": "contract-1",
+      "projectId": "proj-1",
+      "businessId": "bp-1",
+      "freelancerId": "fp-1",
+      "proposalId": "prop-1",
+      "title": "AI Analytics Dashboard & Real-Time Customer Insights Hub",
+      "terms": "Full development and delivery of the AI Analytics Dashboard per agreed milestone specifications. 100% IP assignment upon final approval and payment. Freelancer provides 30-day post-launch bug fix guarantee.",
+      "totalAmount": 4500,
+      "status": "active",
+      "startDate": "2026-09-08",
+      "createdAt": "2026-09-08T00:00:00.000Z",
+      "milestones": [
+        {
+          "id": "ms-1",
+          "contractId": "contract-1",
+          "title": "System Architecture, Data Contracts & Wireframes",
+          "description": "Complete design specs, mock API endpoints, and navigation shell with TypeScript types.",
+          "amount": 1200,
+          "dueDate": "2026-09-15",
+          "status": "paid",
+          "deliverableUrl": "https://github.com/skillbridge-demo/analytics-hub/tree/phase-1",
+          "deliverableNotes": "Architecture blueprints and initial mock API contracts completed and merged to main.",
+          "submittedAt": "2026-09-14T10:00:00.000Z",
+          "approvedAt": "2026-09-15T14:30:00.000Z",
+          "paidAt": "2026-09-15T15:00:00.000Z"
+        },
+        {
+          "id": "ms-2",
+          "contractId": "contract-1",
+          "title": "Interactive Analytics Charts & Core Telemetry Feeds",
+          "description": "Visual charts, filter controls, data aggregation, and socket connections for live streaming.",
+          "amount": 1800,
+          "dueDate": "2026-10-15",
+          "status": "paid",
+          "deliverableUrl": "https://staging.techventures.ai/v2-preview",
+          "deliverableNotes": "Retina charts rendered with 60fps smoothing.",
+          "submittedAt": "2026-10-08T18:20:00.000Z",
+          "revisionNotes": "Please check high-dpi chart rendering",
+          "paidAt": "2026-10-09T07:59:10.168Z"
+        },
+        {
+          "id": "ms-3",
+          "contractId": "contract-1",
+          "title": "Exporting, Security Audit, E2E Testing & Deployment",
+          "description": "CSV/PDF exports, rate limiting, responsive audit, and production staging deployment.",
+          "amount": 1500,
+          "dueDate": "2026-11-05",
+          "status": "in_progress"
+        }
+      ]
+    }
+  ],
+  "conversations": [
+    {
+      "id": "conv-1",
+      "participantIds": [
+        "user-business-1",
+        "user-freelancer-1"
+      ],
+      "projectId": "proj-1",
+      "contractId": "contract-1",
+      "updatedAt": "2026-10-08T18:30:00.000Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-1",
+      "conversationId": "conv-1",
+      "senderId": "user-business-1",
+      "text": "Hi Sarah! We reviewed your proposal and were really impressed by your work on the Apex Finance Hub. Are you ready to kickoff Phase 1 next week?",
+      "read": true,
+      "createdAt": "2026-09-04T14:00:00.000Z"
+    },
+    {
+      "id": "msg-2",
+      "conversationId": "conv-1",
+      "senderId": "user-freelancer-1",
+      "text": "Absolutely Alex! I am excited to collaborate. I have already mapped out the component hierarchy and state transitions.",
+      "read": true,
+      "createdAt": "2026-09-04T14:15:00.000Z"
+    },
+    {
+      "id": "msg-3",
+      "conversationId": "conv-1",
+      "senderId": "user-freelancer-1",
+      "text": "Alex, just submitted Milestone 2 for your review! The live preview link is live on staging. Let me know if you want any adjustments on the chart tooltips.",
+      "read": false,
+      "createdAt": "2026-10-08T18:25:00.000Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "recipientId": "user-business-1",
+      "type": "milestone_submitted",
+      "title": "Milestone Submitted for Review",
+      "message": "Sarah Jenkins submitted Milestone 2: \"Interactive Analytics Charts & Core Telemetry Feeds\" ($1,800).",
+      "link": "/business/contracts/contract-1",
+      "read": false,
+      "createdAt": "2026-10-08T18:21:00.000Z"
+    },
+    {
+      "id": "notif-2",
+      "recipientId": "user-freelancer-1",
+      "type": "payment_received",
+      "title": "Payment Released",
+      "message": "Payment for Milestone 1 ($1,200) has been successfully released to your balance.",
+      "link": "/freelancer/earnings",
+      "read": true,
+      "createdAt": "2026-09-15T15:05:00.000Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-test-1791532750168",
+      "contractId": "contract-1",
+      "reviewerId": "user-business-1",
+      "reviewedUserId": "user-freelancer-1",
+      "rating": 5,
+      "feedback": "Outstanding technical architecture and proactive communication.",
+      "createdAt": "2026-10-09T07:59:10.168Z"
+    },
+    {
+      "id": "rev-1",
+      "contractId": "contract-past-demo",
+      "reviewerId": "user-business-1",
+      "reviewedUserId": "user-freelancer-1",
+      "rating": 5,
+      "feedback": "Sarah is one of the sharpest engineers we have worked with. Clean TypeScript code, proactive communication, and delivered 3 days ahead of schedule. Highly recommended!",
+      "createdAt": "2025-11-20T12:00:00.000Z"
+    }
+  ],
+  "disputes": [],
+  "auditLogs": [
+    {
+      "id": "audit-1791532750169",
+      "adminId": "user-admin-1",
+      "adminEmail": "admin@skillbridge.io",
+      "action": "TEST_SUITE_VERIFICATION",
+      "targetType": "Contract",
+      "targetId": "contract-1",
+      "details": "Automated test suite verification executed.",
+      "createdAt": "2026-10-09T07:59:10.169Z"
+    },
+    {
+      "id": "audit-1",
+      "adminId": "user-admin-1",
+      "adminEmail": "admin@skillbridge.io",
+      "action": "USER_VERIFICATION_APPROVED",
+      "targetType": "FreelancerProfile",
+      "targetId": "fp-1",
+      "details": "Verified identity and credentials for Sarah Jenkins.",
+      "createdAt": "2025-10-16T09:00:00.000Z"
+    },
+    {
+      "id": "audit-2",
+      "adminId": "user-admin-1",
+      "adminEmail": "admin@skillbridge.io",
+      "action": "PROJECT_MODERATION_APPROVED",
+      "targetType": "Project",
+      "targetId": "proj-1",
+      "details": "Approved public listing for AI Analytics Dashboard.",
+      "createdAt": "2026-09-01T10:15:00.000Z"
+    }
+  ]
+}

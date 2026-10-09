@@ -1,0 +1,21 @@
+{
+  "name": "skillbridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SkillBridge — AI-Powered Freelancer & Business Marketplace",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=@skillbridge/api\" \"npm run dev --workspace=@skillbridge/web\"",
+    "dev:api": "npm run dev --workspace=@skillbridge/api",
+    "dev:web": "npm run dev --workspace=@skillbridge/web",
+    "build": "npm run build --workspaces --if-present",
+    "seed": "npm run seed --workspace=@skillbridge/api",
+    "test": "npm run test --workspace=@skillbridge/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
