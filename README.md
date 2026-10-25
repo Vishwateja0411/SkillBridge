@@ -74,18 +74,6 @@ Open your browser at: **`http://localhost:5173`**
 
 ---
 
-## 👥 Pre-Configured Demo Accounts
-
-For instant evaluation, SkillBridge includes pre-configured demo personas with 1-click login switchers in the UI:
-
-| Role | Name | Email | Password | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| **Business (Client)** | Alex Chen | `client@skillbridge.io` | `Password123!` | Founder at TechVentures AI |
-| **Freelancer (Senior)** | Sarah Jenkins | `sarah@skillbridge.io` | `Password123!` | Senior Full-Stack Engineer |
-| **Freelancer (Design)** | Elena Rostova | `elena@skillbridge.io` | `Password123!` | Lead UI/UX Product Designer |
-| **Freelancer (Cloud)** | Marcus Vance | `marcus@skillbridge.io` | `Password123!` | DevOps & Cloud Engineer |
-| **Admin** | Platform Admin | `admin@skillbridge.io` | `AdminSecret2026!` | Moderation, Disputes & Audit Logs |
-
 ---
 
 ## 📁 Repository Monorepo Structure
