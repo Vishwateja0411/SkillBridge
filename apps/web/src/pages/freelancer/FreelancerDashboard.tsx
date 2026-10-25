@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   Sparkles,
   ArrowRight,
-  Clock,
   Star,
   ShieldCheck,
   ChevronRight,
@@ -46,20 +45,20 @@ export const FreelancerDashboard: React.FC = () => {
   }, 0);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-[#F6F1E4]">
       {/* Welcome Banner */}
-      <div className="bg-gradient-to-r from-brand-navy via-slate-900 to-brand-indigo rounded-3xl p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="bg-[#114A39] border border-[#1F5A46] rounded-[12px] p-8 text-[#F6F1E4] shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold">Welcome back, {user?.name}!</h1>
+          <div className="flex items-center gap-2.5">
+            <h1 className="font-serif text-3xl font-medium">Welcome back, {user?.name}</h1>
             {fProfile?.verificationStatus === 'verified' && (
-              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-brand-teal bg-teal-500/20 px-2 py-0.5 rounded-full border border-teal-400/30">
-                <ShieldCheck className="w-3.5 h-3.5" />
+              <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#E5CB86] bg-[#072A20] px-2.5 py-0.5 rounded-[4px] border border-[#1F5A46]">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#C9A24B]" />
                 Verified
               </span>
             )}
           </div>
-          <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
+          <p className="text-xs text-[#BFD0C6] max-w-xl leading-relaxed">
             {fProfile?.headline || 'Senior Full-Stack Engineer | React & Node Architect'}
           </p>
         </div>
@@ -67,14 +66,14 @@ export const FreelancerDashboard: React.FC = () => {
         <div className="flex gap-3">
           <Link
             to="/freelancer/projects"
-            className="px-5 py-2.5 rounded-xl bg-brand-teal hover:bg-teal-400 text-slate-900 font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
+            className="px-5 py-2.5 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-semibold text-xs transition-colors flex items-center gap-1.5 shadow-sm"
           >
             <Briefcase className="w-4 h-4" />
             <span>Find Projects</span>
           </Link>
           <Link
             to="/freelancer/portfolio"
-            className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-colors"
+            className="px-5 py-2.5 rounded-[6px] bg-[#072A20] hover:bg-[#0B3D2E] text-[#F6F1E4] font-medium text-xs border border-[#1F5A46] hover:border-[#C9A24B] transition-colors"
           >
             Manage Portfolio
           </Link>
@@ -83,47 +82,47 @@ export const FreelancerDashboard: React.FC = () => {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-          <div className="flex items-center justify-between text-xs text-slate-500">
-            <span className="font-medium">Active Proposals</span>
-            <FileText className="w-4 h-4 text-brand-indigo" />
+        <div className="bg-[#114A39] p-5 rounded-[12px] border border-[#1F5A46] shadow-sm space-y-2">
+          <div className="flex items-center justify-between text-xs text-[#BFD0C6]">
+            <span>Active Proposals</span>
+            <FileText className="w-4 h-4 text-[#C9A24B]" />
           </div>
-          <div className="text-2xl font-extrabold text-slate-900">{proposals.length}</div>
-          <div className="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
+          <div className="font-serif text-3xl font-medium text-[#F6F1E4]">{proposals.length}</div>
+          <div className="text-[11px] text-[#7BC49A] flex items-center gap-1">
             <TrendingUp className="w-3 h-3" />
             <span>1 shortlisted candidate</span>
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-          <div className="flex items-center justify-between text-xs text-slate-500">
-            <span className="font-medium">Active Contracts</span>
-            <CheckCircle2 className="w-4 h-4 text-brand-teal" />
+        <div className="bg-[#114A39] p-5 rounded-[12px] border border-[#1F5A46] shadow-sm space-y-2">
+          <div className="flex items-center justify-between text-xs text-[#BFD0C6]">
+            <span>Active Contracts</span>
+            <CheckCircle2 className="w-4 h-4 text-[#7BC49A]" />
           </div>
-          <div className="text-2xl font-extrabold text-slate-900">{activeContracts.length}</div>
-          <div className="text-[11px] text-slate-500">
+          <div className="font-serif text-3xl font-medium text-[#F6F1E4]">{activeContracts.length}</div>
+          <div className="text-[11px] text-[#9DB5A8]">
             {contracts.length} total contracts
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-          <div className="flex items-center justify-between text-xs text-slate-500">
-            <span className="font-medium">Total Payouts Released</span>
-            <DollarSign className="w-4 h-4 text-emerald-600" />
+        <div className="bg-[#114A39] p-5 rounded-[12px] border border-[#1F5A46] shadow-sm space-y-2">
+          <div className="flex items-center justify-between text-xs text-[#BFD0C6]">
+            <span>Total Payouts Released</span>
+            <DollarSign className="w-4 h-4 text-[#7BC49A]" />
           </div>
-          <div className="text-2xl font-extrabold text-slate-900">${totalEarnings.toLocaleString()}</div>
-          <div className="text-[11px] text-emerald-600 font-semibold">
+          <div className="font-serif text-3xl font-medium text-[#E5CB86]">${totalEarnings.toLocaleString()}</div>
+          <div className="text-[11px] text-[#7BC49A]">
             5% transparent platform fee
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-          <div className="flex items-center justify-between text-xs text-slate-500">
-            <span className="font-medium">Client Rating</span>
-            <Star className="w-4 h-4 text-amber-500 fill-amber-400" />
+        <div className="bg-[#114A39] p-5 rounded-[12px] border border-[#1F5A46] shadow-sm space-y-2">
+          <div className="flex items-center justify-between text-xs text-[#BFD0C6]">
+            <span>Client Rating</span>
+            <Star className="w-4 h-4 text-[#C9A24B] fill-[#C9A24B]" />
           </div>
-          <div className="text-2xl font-extrabold text-slate-900">{fProfile?.rating || 5.0}</div>
-          <div className="text-[11px] text-slate-500">
+          <div className="font-serif text-3xl font-medium text-[#F6F1E4]">{fProfile?.rating || 5.0}</div>
+          <div className="text-[11px] text-[#9DB5A8]">
             Based on {fProfile?.reviewCount || 28} client reviews
           </div>
         </div>
@@ -131,15 +130,15 @@ export const FreelancerDashboard: React.FC = () => {
 
       {/* Active Contract Workspace Notice */}
       {activeContracts.length > 0 && (
-        <div className="bg-indigo-50/60 border border-indigo-200 rounded-2xl p-6 space-y-3">
+        <div className="bg-[#072A20] border border-[#1F5A46] rounded-[12px] p-6 space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-xs font-bold text-brand-indigo uppercase tracking-wider">Active Workspace</span>
+              <span className="w-2 h-2 rounded-full bg-[#7BC49A] animate-pulse" />
+              <span className="text-[11px] font-semibold text-[#E5CB86] uppercase tracking-wider">Active Workspace</span>
             </div>
             <Link
               to={`/freelancer/contracts/${activeContracts[0].id}`}
-              className="text-xs font-bold text-brand-indigo hover:underline flex items-center gap-1"
+              className="text-xs font-medium text-[#E5CB86] hover:underline flex items-center gap-1"
             >
               <span>Open Project Workspace</span>
               <ChevronRight className="w-4 h-4" />
@@ -148,13 +147,13 @@ export const FreelancerDashboard: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
             <div>
-              <h3 className="font-bold text-base text-slate-900">{activeContracts[0].title}</h3>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <h3 className="font-serif text-xl font-medium text-[#F6F1E4]">{activeContracts[0].title}</h3>
+              <p className="text-xs text-[#BFD0C6] mt-0.5">
                 Client: {activeContracts[0].business?.companyName || 'TechVentures AI'} • Total Value: ${activeContracts[0].totalAmount.toLocaleString()}
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs bg-amber-100 text-amber-800 font-semibold px-2.5 py-1 rounded-lg">
+              <span className="text-xs bg-[#114A39] text-[#E5CB86] border border-[#1F5A46] font-medium px-3 py-1 rounded-[4px]">
                 Milestone 2 Submitted (Awaiting Review)
               </span>
             </div>
@@ -166,10 +165,10 @@ export const FreelancerDashboard: React.FC = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Recommended for Your Skillset</h2>
-            <p className="text-xs text-slate-500">Ranked by AI compatibility scoring</p>
+            <h2 className="font-serif text-2xl font-medium text-[#F6F1E4]">Recommended Opportunities</h2>
+            <p className="text-xs text-[#BFD0C6]">Ranked by rule-based compatibility scoring</p>
           </div>
-          <Link to="/freelancer/projects" className="text-xs font-bold text-brand-indigo hover:underline flex items-center gap-1">
+          <Link to="/freelancer/projects" className="text-xs font-medium text-[#E5CB86] hover:underline flex items-center gap-1">
             <span>View all projects</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -181,38 +180,38 @@ export const FreelancerDashboard: React.FC = () => {
             return (
               <div
                 key={p.id}
-                className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+                className="bg-[#114A39] p-6 rounded-[12px] border border-[#1F5A46] shadow-sm hover:border-[#2B6D56] transition-all flex flex-col justify-between space-y-4"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-brand-indigo bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-[#C9A24B] bg-[#072A20] px-2 py-0.5 rounded-[4px] border border-[#1F5A46]">
                       {p.category}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
-                      <Sparkles className="w-3 h-3" />
+                    <span className="inline-flex items-center gap-1 text-xs font-medium text-[#E5CB86] bg-[#072A20] px-2 py-0.5 rounded-[4px] border border-[#1F5A46]">
+                      <Sparkles className="w-3 h-3 text-[#C9A24B]" />
                       {matchPercent}% Match
                     </span>
                   </div>
 
-                  <h3 className="font-bold text-sm text-slate-900 line-clamp-1 mb-1">{p.title}</h3>
-                  <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed mb-3">{p.description}</p>
+                  <h3 className="font-serif text-lg font-medium text-[#F6F1E4] line-clamp-1 mb-1">{p.title}</h3>
+                  <p className="text-xs text-[#BFD0C6] line-clamp-2 leading-relaxed mb-3">{p.description}</p>
 
                   <div className="flex flex-wrap gap-1">
                     {p.requiredSkills.map((s) => (
-                      <span key={s} className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded">
+                      <span key={s} className="text-[10px] bg-[#072A20] text-[#BFD0C6] border border-[#1F5A46] px-2 py-0.5 rounded-[4px]">
                         {s}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="font-extrabold text-sm text-brand-navy">
+                <div className="pt-3 border-t border-[#1F5A46] flex items-center justify-between">
+                  <span className="font-serif text-lg font-medium text-[#E5CB86]">
                     ${p.budgetMin.toLocaleString()} - ${p.budgetMax.toLocaleString()}
                   </span>
                   <Link
                     to={`/projects/${p.id}`}
-                    className="px-3.5 py-1.5 rounded-xl bg-brand-navy hover:bg-slate-800 text-white font-semibold text-xs transition-colors"
+                    className="px-3.5 py-1.5 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-semibold text-xs transition-colors"
                   >
                     Apply Now
                   </Link>

@@ -49,54 +49,56 @@ export const FreelancerOnboardingPage: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto py-12 px-4 space-y-8">
       <div>
-        <span className="text-xs font-bold text-brand-indigo uppercase tracking-wider">Freelancer Onboarding</span>
-        <h1 className="text-3xl font-extrabold text-brand-navy mt-1">Complete Your Professional Profile</h1>
-        <p className="text-xs text-slate-500 mt-1">Step {step} of 3</p>
+        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C9A24B]">Freelancer Onboarding</span>
+        <h1 className="font-serif text-3xl sm:text-4xl font-medium text-[#F6F1E4] mt-1">
+          Complete Your <span className="italic text-[#E5CB86]">Professional Profile</span>
+        </h1>
+        <p className="text-xs text-[#BFD0C6] mt-1">Step {step} of 3</p>
       </div>
 
       {/* Progress pill */}
       <div className="flex gap-2">
-        <div className={`h-2 flex-1 rounded-full ${step >= 1 ? 'bg-brand-indigo' : 'bg-slate-200'}`} />
-        <div className={`h-2 flex-1 rounded-full ${step >= 2 ? 'bg-brand-indigo' : 'bg-slate-200'}`} />
-        <div className={`h-2 flex-1 rounded-full ${step >= 3 ? 'bg-brand-indigo' : 'bg-slate-200'}`} />
+        <div className={`h-1.5 flex-1 rounded-full ${step >= 1 ? 'bg-[#C9A24B]' : 'bg-[#1F5A46]'}`} />
+        <div className={`h-1.5 flex-1 rounded-full ${step >= 2 ? 'bg-[#C9A24B]' : 'bg-[#1F5A46]'}`} />
+        <div className={`h-1.5 flex-1 rounded-full ${step >= 3 ? 'bg-[#C9A24B]' : 'bg-[#1F5A46]'}`} />
       </div>
 
-      <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+      <div className="bg-[#114A39] p-8 rounded-[12px] border border-[#1F5A46] space-y-6">
         {step === 1 && (
           <div className="space-y-4">
-            <h2 className="text-base font-bold text-slate-900">Step 1: Role & Biography</h2>
+            <h2 className="font-serif text-lg font-medium text-[#F6F1E4]">Step 1: Role & Biography</h2>
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Headline</label>
+              <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Headline</label>
               <input
                 type="text"
                 value={headline}
                 onChange={(e) => setHeadline(e.target.value)}
-                className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+                className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">About & Experience Summary</label>
+              <label className="block text-xs font-medium text-[#F6F1E4] mb-1">About & Experience Summary</label>
               <textarea
                 rows={4}
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+                className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Location</label>
+              <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Location</label>
               <input
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+                className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
               />
             </div>
             <div className="flex justify-end pt-4">
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                className="px-6 py-2.5 rounded-xl bg-brand-indigo hover:bg-brand-indigo-dark text-white font-bold text-xs flex items-center gap-2"
+                className="px-6 py-2.5 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-medium text-xs flex items-center gap-2 transition-colors"
               >
                 <span>Next: Skills & Experience</span>
                 <ArrowRight className="w-4 h-4" />
@@ -107,22 +109,22 @@ export const FreelancerOnboardingPage: React.FC = () => {
 
         {step === 2 && (
           <div className="space-y-4">
-            <h2 className="text-base font-bold text-slate-900">Step 2: Skills & Expertise Tier</h2>
+            <h2 className="font-serif text-lg font-medium text-[#F6F1E4]">Step 2: Skills & Expertise Tier</h2>
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Primary Skills (comma-separated)</label>
+              <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Primary Skills (comma-separated)</label>
               <input
                 type="text"
                 value={skills}
                 onChange={(e) => setSkills(e.target.value)}
-                className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+                className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Experience Level</label>
+              <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Experience Level</label>
               <select
                 value={experienceLevel}
                 onChange={(e) => setExperienceLevel(e.target.value)}
-                className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 bg-white"
+                className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
               >
                 <option value="entry">Entry Level (1-2 years)</option>
                 <option value="intermediate">Intermediate (3-5 years)</option>
@@ -133,14 +135,14 @@ export const FreelancerOnboardingPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl"
+                className="px-4 py-2 text-xs font-medium text-[#BFD0C6] hover:bg-[#072A20] border border-transparent hover:border-[#1F5A46] rounded-[6px] transition-colors"
               >
                 Back
               </button>
               <button
                 type="button"
                 onClick={() => setStep(3)}
-                className="px-6 py-2.5 rounded-xl bg-brand-indigo hover:bg-brand-indigo-dark text-white font-bold text-xs flex items-center gap-2"
+                className="px-6 py-2.5 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-medium text-xs flex items-center gap-2 transition-colors"
               >
                 <span>Next: Rates & Availability</span>
                 <ArrowRight className="w-4 h-4" />
@@ -151,23 +153,23 @@ export const FreelancerOnboardingPage: React.FC = () => {
 
         {step === 3 && (
           <div className="space-y-4">
-            <h2 className="text-base font-bold text-slate-900">Step 3: Hourly Rate & Availability</h2>
+            <h2 className="font-serif text-lg font-medium text-[#F6F1E4]">Step 3: Hourly Rate & Availability</h2>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1">Target Hourly Rate ($ USD)</label>
+                <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Target Hourly Rate ($ USD)</label>
                 <input
                   type="number"
                   value={hourlyRate}
                   onChange={(e) => setHourlyRate(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-slate-200 text-xs font-bold text-slate-800 focus:outline-none focus:border-brand-indigo"
+                  className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1">Availability</label>
+                <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Availability</label>
                 <select
                   value={availability}
                   onChange={(e) => setAvailability(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 bg-white"
+                  className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
                 >
                   <option value="full_time">Full Time</option>
                   <option value="part_time">Part Time</option>
@@ -175,8 +177,8 @@ export const FreelancerOnboardingPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-100 text-xs text-slate-600">
-              <span className="font-bold text-brand-indigo block">Verification Notice:</span>
+            <div className="p-4 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#BFD0C6]">
+              <span className="font-medium text-[#E5CB86] block">Verification Notice:</span>
               Upon completion, your profile will be submitted for SkillBridge identity & credential badge review.
             </div>
 
@@ -184,7 +186,7 @@ export const FreelancerOnboardingPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl"
+                className="px-4 py-2 text-xs font-medium text-[#BFD0C6] hover:bg-[#072A20] border border-transparent hover:border-[#1F5A46] rounded-[6px] transition-colors"
               >
                 Back
               </button>
@@ -192,7 +194,7 @@ export const FreelancerOnboardingPage: React.FC = () => {
                 type="button"
                 onClick={handleFinish}
                 disabled={loading}
-                className="px-6 py-2.5 rounded-xl bg-brand-navy hover:bg-slate-800 text-white font-bold text-xs flex items-center gap-2"
+                className="px-6 py-2.5 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-medium text-xs flex items-center gap-2 transition-colors"
               >
                 <span>{loading ? 'Submitting...' : 'Complete Onboarding & Go to Dashboard'}</span>
                 <ArrowRight className="w-4 h-4" />

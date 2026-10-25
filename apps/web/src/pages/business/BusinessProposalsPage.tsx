@@ -101,23 +101,25 @@ export const BusinessProposalsPage: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="text-center py-20 text-slate-500">Loading candidate proposals...</div>;
+  if (loading) return <div className="text-center py-20 text-[#BFD0C6]">Loading candidate proposals...</div>;
 
   return (
     <div className="space-y-8 pb-16">
       {/* Project Header Banner */}
-      <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+      <div className="bg-[#114A39] p-8 rounded-[12px] border border-[#1F5A46] space-y-3">
         <div className="flex items-center gap-2">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-brand-indigo bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C9A24B] bg-[#072A20] px-2.5 py-0.5 rounded-[4px] border border-[#1F5A46]">
             {project?.category}
           </span>
-          <span className="text-xs text-slate-400">Budget: ${project?.budgetMin.toLocaleString()} - ${project?.budgetMax.toLocaleString()}</span>
+          <span className="text-xs text-[#9DB5A8]">
+            Budget: ${project?.budgetMin.toLocaleString()} - ${project?.budgetMax.toLocaleString()}
+          </span>
         </div>
-        <h1 className="text-2xl font-extrabold text-slate-900">{project?.title}</h1>
-        <p className="text-xs text-slate-500 leading-relaxed max-w-3xl">{project?.description}</p>
+        <h1 className="font-serif text-3xl font-medium text-[#F6F1E4]">{project?.title}</h1>
+        <p className="text-xs text-[#BFD0C6] leading-relaxed max-w-3xl">{project?.description}</p>
         <div className="flex flex-wrap gap-1.5 pt-1">
           {project?.requiredSkills.map((s) => (
-            <span key={s} className="text-[10px] font-semibold bg-slate-100 text-slate-700 px-2 py-0.5 rounded">
+            <span key={s} className="text-[10px] font-medium bg-[#072A20] text-[#9DB5A8] border border-[#1F5A46] px-2 py-0.5 rounded-[4px]">
               {s}
             </span>
           ))}
@@ -125,12 +127,12 @@ export const BusinessProposalsPage: React.FC = () => {
       </div>
 
       {actionSuccess && (
-        <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 text-xs flex items-center justify-between">
+        <div className="p-3.5 rounded-[6px] bg-[#114A39] border border-[#7BC49A] text-[#7BC49A] text-xs flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            <CheckCircle2 className="w-4 h-4 text-[#7BC49A]" />
             <span>{actionSuccess}</span>
           </div>
-          <button onClick={() => setActionSuccess('')} className="text-emerald-500 hover:text-emerald-800">
+          <button onClick={() => setActionSuccess('')} className="text-[#7BC49A] hover:text-[#F6F1E4]">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -139,15 +141,15 @@ export const BusinessProposalsPage: React.FC = () => {
       {/* Proposals List Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-bold text-slate-900">
+          <h2 className="font-serif text-2xl font-medium text-[#F6F1E4]">
             Candidate Proposals ({proposals.length})
           </h2>
-          <p className="text-xs text-slate-500">Ranked by transparent 6-factor AI compatibility scores</p>
+          <p className="text-xs text-[#BFD0C6]">Ranked by transparent 6-factor compatibility scores</p>
         </div>
       </div>
 
       {proposals.length === 0 ? (
-        <div className="bg-white p-12 text-center rounded-3xl border border-slate-200 text-xs text-slate-400">
+        <div className="bg-[#114A39] p-12 text-center rounded-[12px] border border-[#1F5A46] text-xs text-[#9DB5A8]">
           No proposals received yet for this project.
         </div>
       ) : (
@@ -158,7 +160,7 @@ export const BusinessProposalsPage: React.FC = () => {
             return (
               <div
                 key={prop.id}
-                className="bg-white p-7 rounded-3xl border border-slate-200 shadow-sm space-y-6 hover:border-slate-300 transition-all"
+                className="bg-[#114A39] p-7 rounded-[12px] border border-[#1F5A46] space-y-6 hover:border-[#2B6D56] transition-all"
               >
                 {/* Top candidate header */}
                 <div className="flex flex-col md:flex-row justify-between md:items-start gap-6">
@@ -166,37 +168,37 @@ export const BusinessProposalsPage: React.FC = () => {
                     <img
                       src={freelancer?.user?.avatar || `https://api.dicebear.com/7.x/initials/svg?seed=${freelancer?.user?.name}`}
                       alt={freelancer?.user?.name}
-                      className="w-16 h-16 rounded-2xl object-cover border border-slate-200 flex-shrink-0"
+                      className="w-16 h-16 rounded-full object-cover border border-[#1F5A46] flex-shrink-0"
                     />
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
                         <Link
                           to={`/freelancers/${freelancer?.id}`}
-                          className="font-bold text-base text-slate-900 hover:text-brand-indigo"
+                          className="font-serif text-lg font-medium text-[#F6F1E4] hover:text-[#E5CB86] transition-colors"
                         >
                           {freelancer?.user?.name}
                         </Link>
                         {freelancer?.verificationStatus === 'verified' && (
                           <span title="Verified Freelancer">
-                            <ShieldCheck className="w-4 h-4 text-brand-teal" />
+                            <ShieldCheck className="w-4 h-4 text-[#C9A24B]" />
                           </span>
                         )}
                         <span
-                          className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                          className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-[4px] border ${
                             prop.status === 'accepted'
-                              ? 'bg-emerald-100 text-emerald-800'
+                              ? 'bg-[#072A20] border-[#7BC49A] text-[#7BC49A]'
                               : prop.status === 'shortlisted'
-                              ? 'bg-indigo-100 text-indigo-800'
-                              : 'bg-slate-100 text-slate-600'
+                                ? 'bg-[#072A20] border-[#E5CB86] text-[#E5CB86]'
+                                : 'bg-[#072A20] border-[#1F5A46] text-[#9DB5A8]'
                           }`}
                         >
                           {prop.status.replace('_', ' ')}
                         </span>
                       </div>
-                      <p className="text-xs font-semibold text-brand-indigo">{freelancer?.headline}</p>
-                      <div className="flex items-center gap-3 text-xs text-slate-500">
-                        <span className="flex items-center gap-1 text-amber-500 font-bold">
-                          <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      <p className="text-xs text-[#E5CB86]">{freelancer?.headline}</p>
+                      <div className="flex items-center gap-3 text-xs text-[#BFD0C6]">
+                        <span className="flex items-center gap-1 text-[#E5CB86] font-medium">
+                          <Star className="w-3.5 h-3.5 fill-[#C9A24B] text-[#C9A24B]" />
                           {freelancer?.rating} ({freelancer?.reviewCount} reviews)
                         </span>
                         <span>${freelancer?.hourlyRate}/hr</span>
@@ -205,41 +207,41 @@ export const BusinessProposalsPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* AI Score Badge */}
-                  <div className="bg-indigo-50/70 border border-indigo-100 rounded-2xl p-4 text-right flex-shrink-0">
-                    <div className="flex items-center justify-end gap-1 text-brand-indigo font-extrabold text-2xl">
-                      <Sparkles className="w-5 h-5 text-amber-500" />
+                  {/* Score Badge */}
+                  <div className="bg-[#072A20] border border-[#1F5A46] rounded-[8px] p-4 text-right flex-shrink-0">
+                    <div className="flex items-center justify-end gap-1 font-serif text-3xl font-medium text-[#E5CB86]">
+                      <Sparkles className="w-4 h-4 text-[#C9A24B]" />
                       <span>{match?.totalScore || 92}%</span>
                     </div>
-                    <div className="text-[11px] font-bold text-brand-navy">AI Compatibility Score</div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">Based on 6 verified signals</div>
+                    <div className="text-[11px] font-medium text-[#F6F1E4]">Compatibility Score</div>
+                    <div className="text-[10px] text-[#9DB5A8] mt-0.5">Rule-based scoring</div>
                   </div>
                 </div>
 
                 {/* Match Factors Explanation Card */}
                 {match && (
-                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
-                    <div className="font-bold text-slate-800 flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-brand-indigo" />
-                      <span>Transparent AI Factor Breakdown:</span>
+                  <div className="p-4 rounded-[8px] bg-[#072A20] border border-[#1F5A46] space-y-2 text-xs">
+                    <div className="font-medium text-[#E5CB86] flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#C9A24B]" />
+                      <span>Transparent Factor Breakdown:</span>
                     </div>
-                    <p className="text-slate-600 text-xs italic">{match.summary}</p>
+                    <p className="text-[#BFD0C6] text-xs italic">{match.summary}</p>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 text-[11px]">
-                      <div className="bg-white p-2 rounded-lg border border-slate-100">
-                        <span className="text-slate-400 block">Skills Match (35%)</span>
-                        <span className="font-bold text-slate-800">{match.factors.skillsMatch.score}% Overlap</span>
+                      <div className="bg-[#114A39] p-2.5 rounded-[6px] border border-[#1F5A46]">
+                        <span className="text-[#9DB5A8] block">Skills Match (35%)</span>
+                        <span className="font-medium text-[#F6F1E4]">{match.factors.skillsMatch.score}% Overlap</span>
                       </div>
-                      <div className="bg-white p-2 rounded-lg border border-slate-100">
-                        <span className="text-slate-400 block">Experience (20%)</span>
-                        <span className="font-bold text-slate-800">{match.factors.experienceMatch.score}% Tier</span>
+                      <div className="bg-[#114A39] p-2.5 rounded-[6px] border border-[#1F5A46]">
+                        <span className="text-[#9DB5A8] block">Experience (20%)</span>
+                        <span className="font-medium text-[#F6F1E4]">{match.factors.experienceMatch.score}% Tier</span>
                       </div>
-                      <div className="bg-white p-2 rounded-lg border border-slate-100">
-                        <span className="text-slate-400 block">Portfolio (20%)</span>
-                        <span className="font-bold text-slate-800">{match.factors.portfolioSimilarity.matchedCount} Similar Items</span>
+                      <div className="bg-[#114A39] p-2.5 rounded-[6px] border border-[#1F5A46]">
+                        <span className="text-[#9DB5A8] block">Portfolio (20%)</span>
+                        <span className="font-medium text-[#F6F1E4]">{match.factors.portfolioSimilarity.matchedCount} Similar Items</span>
                       </div>
-                      <div className="bg-white p-2 rounded-lg border border-slate-100">
-                        <span className="text-slate-400 block">Rating (10%)</span>
-                        <span className="font-bold text-slate-800">{freelancer?.rating} / 5.0</span>
+                      <div className="bg-[#114A39] p-2.5 rounded-[6px] border border-[#1F5A46]">
+                        <span className="text-[#9DB5A8] block">Rating (10%)</span>
+                        <span className="font-medium text-[#F6F1E4]">{freelancer?.rating} / 5.0</span>
                       </div>
                     </div>
                   </div>
@@ -247,25 +249,25 @@ export const BusinessProposalsPage: React.FC = () => {
 
                 {/* Cover Letter */}
                 <div className="space-y-2 text-xs">
-                  <div className="font-bold text-slate-800">Proposal Cover Letter:</div>
-                  <p className="text-slate-700 leading-relaxed whitespace-pre-line bg-white p-4 rounded-xl border border-slate-100">
+                  <div className="font-medium text-[#F6F1E4]">Proposal Cover Letter:</div>
+                  <p className="text-[#BFD0C6] leading-relaxed whitespace-pre-line bg-[#072A20] p-4 rounded-[6px] border border-[#1F5A46]">
                     {prop.coverLetter}
                   </p>
                 </div>
 
                 {/* Proposed Bid & Actions */}
-                <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between sm:items-center gap-4 text-xs">
+                <div className="pt-4 border-t border-[#1F5A46] flex flex-col sm:flex-row justify-between sm:items-center gap-4 text-xs">
                   <div>
-                    <span className="text-slate-400">Proposed Fixed Price:</span>{' '}
-                    <span className="font-extrabold text-base text-brand-navy">${prop.proposedPrice.toLocaleString()}</span>{' '}
-                    <span className="text-slate-400">• Est. {prop.estimatedDuration}</span>
+                    <span className="text-[#9DB5A8]">Proposed Fixed Price:</span>{' '}
+                    <span className="font-serif text-xl font-medium text-[#E5CB86]">${prop.proposedPrice.toLocaleString()}</span>{' '}
+                    <span className="text-[#9DB5A8]">• Est. {prop.estimatedDuration}</span>
                   </div>
 
                   <div className="flex flex-wrap items-center gap-2">
                     {prop.status !== 'shortlisted' && prop.status !== 'accepted' && (
                       <button
                         onClick={() => handleUpdateStatus(prop.id, 'shortlisted')}
-                        className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold transition-colors"
+                        className="px-3.5 py-2 rounded-[6px] bg-[#072A20] hover:bg-[#114A39] text-[#BFD0C6] border border-[#1F5A46] font-medium transition-colors"
                       >
                         Shortlist Candidate
                       </button>
@@ -274,16 +276,16 @@ export const BusinessProposalsPage: React.FC = () => {
                     {prop.status !== 'accepted' && (
                       <button
                         onClick={() => openOfferModal(prop)}
-                        className="px-5 py-2 rounded-xl bg-brand-navy hover:bg-slate-800 text-white font-bold transition-colors shadow-sm flex items-center gap-1.5"
+                        className="px-5 py-2 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-medium transition-colors flex items-center gap-1.5"
                       >
-                        <FileCheck className="w-4 h-4 text-brand-teal" />
+                        <FileCheck className="w-4 h-4 text-[#0B3D2E]" />
                         <span>Accept Proposal & Send Contract Offer</span>
                       </button>
                     )}
 
                     {prop.status === 'accepted' && (
-                      <div className="text-emerald-700 font-bold flex items-center gap-1">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <div className="text-[#7BC49A] font-medium flex items-center gap-1">
+                        <CheckCircle2 className="w-4 h-4 text-[#7BC49A]" />
                         <span>Contract Active</span>
                       </div>
                     )}
@@ -297,48 +299,48 @@ export const BusinessProposalsPage: React.FC = () => {
 
       {/* Contract Offer Creation Modal */}
       {offerModalOpen && selectedProposal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-          <div className="bg-white rounded-3xl max-w-2xl w-full p-8 shadow-2xl border border-slate-200 relative max-h-[90vh] overflow-y-auto">
-            <button onClick={() => setOfferModalOpen(false)} className="absolute top-6 right-6 text-slate-400 hover:text-slate-700">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#072A20]/80">
+          <div className="bg-[#114A39] rounded-[12px] max-w-2xl w-full p-8 border border-[#1F5A46] relative max-h-[90vh] overflow-y-auto">
+            <button onClick={() => setOfferModalOpen(false)} className="absolute top-6 right-6 text-[#9DB5A8] hover:text-[#F6F1E4]">
               <X className="w-5 h-5" />
             </button>
-            <h3 className="text-xl font-bold text-brand-navy mb-1">Create Formal Contract Offer</h3>
-            <p className="text-xs text-slate-500 mb-6">
-              Candidate: <span className="font-semibold text-slate-800">{selectedProposal.freelancer?.user?.name}</span>
+            <h3 className="font-serif text-2xl font-medium text-[#F6F1E4] mb-1">Create Formal Contract Offer</h3>
+            <p className="text-xs text-[#BFD0C6] mb-6">
+              Candidate: <span className="font-medium text-[#E5CB86]">{selectedProposal.freelancer?.user?.name}</span>
             </p>
 
             <form onSubmit={handleCreateContract} className="space-y-5">
               <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1">Total Contract Value ($ USD)</label>
+                <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Total Contract Value ($ USD)</label>
                 <input
                   type="number"
                   required
                   value={contractAmount}
                   onChange={(e) => setContractAmount(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-slate-200 text-xs font-bold text-slate-800 focus:outline-none focus:border-brand-indigo"
+                  className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs font-medium text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1">Contract Terms & IP Assignment</label>
+                <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Contract Terms & IP Assignment</label>
                 <textarea
                   rows={3}
                   value={contractTerms}
                   onChange={(e) => setContractTerms(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+                  className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
                 />
               </div>
 
               {/* Milestones schedule */}
               <div className="space-y-3">
-                <label className="block text-xs font-bold text-slate-800">Milestone Roadmap</label>
+                <label className="block text-xs font-medium text-[#F6F1E4]">Milestone Roadmap</label>
                 {milestones.map((m, idx) => (
-                  <div key={idx} className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs flex justify-between items-center">
+                  <div key={idx} className="p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs flex justify-between items-center">
                     <div>
-                      <div className="font-bold text-slate-800">{m.title}</div>
-                      <div className="text-[11px] text-slate-400">Due: {m.dueDate}</div>
+                      <div className="font-medium text-[#F6F1E4]">{m.title}</div>
+                      <div className="text-[11px] text-[#9DB5A8]">Due: {m.dueDate}</div>
                     </div>
-                    <div className="font-extrabold text-brand-navy">${m.amount}</div>
+                    <div className="font-serif text-base font-medium text-[#E5CB86]">${m.amount}</div>
                   </div>
                 ))}
               </div>
@@ -347,14 +349,14 @@ export const BusinessProposalsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setOfferModalOpen(false)}
-                  className="px-5 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100"
+                  className="px-5 py-2.5 rounded-[6px] text-xs font-medium text-[#BFD0C6] hover:bg-[#072A20] border border-transparent hover:border-[#1F5A46] transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={creatingContract}
-                  className="px-6 py-2.5 rounded-xl bg-brand-navy hover:bg-slate-800 text-white font-bold text-xs"
+                  className="px-6 py-2.5 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-medium text-xs transition-colors"
                 >
                   {creatingContract ? 'Generating Workspace...' : 'Send Contract Offer & Open Workspace'}
                 </button>

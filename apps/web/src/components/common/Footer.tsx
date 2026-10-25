@@ -1,73 +1,87 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Briefcase, ShieldCheck, Heart, Sparkles } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { ShieldCheck } from 'lucide-react';
 
 export const Footer: React.FC = () => {
+  const location = useLocation();
+
+  const handleNavClick = (targetPath: string) => {
+    if (location.pathname === targetPath) {
+      const prefersReducedMotion =
+        typeof window !== 'undefined' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const behavior: ScrollBehavior = prefersReducedMotion ? 'instant' : 'smooth';
+      window.scrollTo({ top: 0, left: 0, behavior });
+      document.documentElement.scrollTo({ top: 0, left: 0, behavior });
+      document.body.scrollTo({ top: 0, left: 0, behavior });
+    }
+  };
+
   return (
-    <footer className="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+    <footer className="bg-[#072A20] text-[#BFD0C6] border-t border-[#1F5A46] text-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="md:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center gap-2.5">
-              <img
-                src="/logo.png"
-                alt="SkillBridge Logo"
-                className="w-8 h-8 object-contain rounded-xl"
-              />
-              <span className="text-xl font-bold tracking-tight text-white">
-                Skill<span className="text-brand-teal">Bridge</span>
+            <Link to="/" onClick={() => handleNavClick('/')} className="flex items-center gap-3">
+              <div className="w-5 h-5 border-[1.5px] border-[#C9A24B] rotate-45 transform flex items-center justify-center">
+                <div className="w-1.5 h-1.5 bg-[#C9A24B]" />
+              </div>
+              <span className="font-serif text-2xl tracking-normal text-[#F6F1E4] font-medium">
+                SkillBridge
               </span>
             </Link>
-            <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-              Bridging Talent and Opportunity. An AI-powered two-sided marketplace designed for seamless hiring, milestone-based execution, and transparent collaboration.
+            <p className="text-[#9DB5A8] text-xs leading-relaxed max-w-sm">
+              An established talent marketplace built on verified qualifications, milestone escrow protections, and transparent collaboration between businesses and independent professionals.
             </p>
-            <div className="flex items-center gap-2 text-xs text-slate-500">
-              <ShieldCheck className="w-4 h-4 text-brand-teal" />
-              <span>Verified Profiles • Protected Milestones • Escrow Tracking</span>
+            <div className="flex items-center gap-2 text-xs text-[#E5CB86]">
+              <ShieldCheck className="w-4 h-4 text-[#C9A24B]" />
+              <span>Verified Identity • Milestone Escrow • Transparent Pricing</span>
             </div>
           </div>
 
           {/* For Businesses */}
           <div>
-            <h4 className="text-white font-semibold text-xs tracking-wider uppercase mb-3">For Businesses</h4>
+            <h4 className="font-serif text-[#E5CB86] text-base mb-3 font-normal">For Businesses</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link to="/find-freelancers" className="hover:text-white transition-colors">Discover Top Talent</Link></li>
-              <li><Link to="/business/projects/new" className="hover:text-white transition-colors">Post a Project</Link></li>
-              <li><Link to="/how-it-works" className="hover:text-white transition-colors">AI Matching Formula</Link></li>
-              <li><Link to="/pricing" className="hover:text-white transition-colors">Business Pricing (0% Fee)</Link></li>
+              <li><Link to="/find-freelancers" onClick={() => handleNavClick('/find-freelancers')} className="hover:text-[#F6F1E4] transition-colors">Discover Talent</Link></li>
+              <li><Link to="/business/projects/new" onClick={() => handleNavClick('/business/projects/new')} className="hover:text-[#F6F1E4] transition-colors">Post an Opportunity</Link></li>
+              <li><Link to="/how-it-works" onClick={() => handleNavClick('/how-it-works')} className="hover:text-[#F6F1E4] transition-colors">How Milestones Work</Link></li>
+              <li><Link to="/pricing" onClick={() => handleNavClick('/pricing')} className="hover:text-[#F6F1E4] transition-colors">Enterprise Terms (0% Client Fee)</Link></li>
             </ul>
           </div>
 
-          {/* For Freelancers */}
+          {/* For Professionals */}
           <div>
-            <h4 className="text-white font-semibold text-xs tracking-wider uppercase mb-3">For Freelancers</h4>
+            <h4 className="font-serif text-[#E5CB86] text-base mb-3 font-normal">For Professionals</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link to="/projects" className="hover:text-white transition-colors">Explore Projects</Link></li>
-              <li><Link to="/register" className="hover:text-white transition-colors">Create Freelancer Profile</Link></li>
-              <li><Link to="/how-it-works" className="hover:text-white transition-colors">Milestone Workspaces</Link></li>
-              <li><Link to="/pricing" className="hover:text-white transition-colors">Earnings & 5% Platform Fee</Link></li>
+              <li><Link to="/projects" onClick={() => handleNavClick('/projects')} className="hover:text-[#F6F1E4] transition-colors">Explore Projects</Link></li>
+              <li><Link to="/register" onClick={() => handleNavClick('/register')} className="hover:text-[#F6F1E4] transition-colors">Apply for Membership</Link></li>
+              <li><Link to="/how-it-works" onClick={() => handleNavClick('/how-it-works')} className="hover:text-[#F6F1E4] transition-colors">Milestone Workspaces</Link></li>
+              <li><Link to="/pricing" onClick={() => handleNavClick('/pricing')} className="hover:text-[#F6F1E4] transition-colors">Earnings & 5% Service Fee</Link></li>
             </ul>
           </div>
 
           {/* Company & Legal */}
           <div>
-            <h4 className="text-white font-semibold text-xs tracking-wider uppercase mb-3">Platform</h4>
+            <h4 className="font-serif text-[#E5CB86] text-base mb-3 font-normal">Platform</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-              <li><Link to="/contact" className="hover:text-white transition-colors">Support & Contact</Link></li>
-              <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link to="/about" onClick={() => handleNavClick('/about')} className="hover:text-[#F6F1E4] transition-colors">About SkillBridge</Link></li>
+              <li><Link to="/contact" onClick={() => handleNavClick('/contact')} className="hover:text-[#F6F1E4] transition-colors">Support & Concierge</Link></li>
+              <li><Link to="/how-it-works" onClick={() => handleNavClick('/how-it-works')} className="hover:text-[#F6F1E4] transition-colors">Trust & Safety</Link></li>
+              <li><Link to="/pricing" onClick={() => handleNavClick('/pricing')} className="hover:text-[#F6F1E4] transition-colors">Fee Schedule</Link></li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+        <div className="border-t border-[#1F5A46] mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#9DB5A8]">
           <div>
-            © {new Date().getFullYear()} SkillBridge Inc. All rights reserved.
+            © {new Date().getFullYear()} SkillBridge Marketplace. All rights reserved.
           </div>
-          <div className="flex items-center gap-1 mt-2 sm:mt-0">
-            <span>Engineered with precision for modern talent networks</span>
+          <div className="flex items-center gap-3 mt-2 sm:mt-0 text-[11px]">
+            <span>Deep emerald security</span>
+            <span>•</span>
+            <span>Milestone protection</span>
           </div>
         </div>
       </div>

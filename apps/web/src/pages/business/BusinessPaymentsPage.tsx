@@ -92,13 +92,12 @@ export const BusinessPaymentsPage: React.FC = () => {
                   <td className="py-3.5 px-5 font-bold text-slate-900">${m.amount.toLocaleString()}</td>
                   <td className="py-3.5 px-5">
                     <span
-                      className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-                        m.status === 'paid'
+                      className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${m.status === 'paid'
                           ? 'bg-emerald-100 text-emerald-800'
                           : m.status === 'submitted'
-                          ? 'bg-amber-100 text-amber-800'
-                          : 'bg-slate-100 text-slate-600'
-                      }`}
+                            ? 'bg-amber-100 text-amber-800'
+                            : 'bg-slate-100 text-slate-600'
+                        }`}
                     >
                       {m.status === 'paid' ? 'Paid / Released' : m.status === 'submitted' ? 'In Review' : 'Earmarked'}
                     </span>

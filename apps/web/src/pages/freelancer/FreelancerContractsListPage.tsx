@@ -15,19 +15,24 @@ export const FreelancerContractsListPage: React.FC = () => {
     });
   }, []);
 
-  if (loading) return <div className="text-center py-20 text-slate-500">Loading contracts...</div>;
+  if (loading) return <div className="text-center py-20 text-[#BFD0C6]">Loading contracts...</div>;
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Active & Past Contracts</h1>
-        <p className="text-xs text-slate-500 mt-1">Access dedicated project workspaces, milestone reviews, and deliverable handoffs</p>
+        <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C9A24B]">
+          ESCROW & DELIVERABLES
+        </div>
+        <h1 className="font-serif text-3xl font-medium text-[#F6F1E4] mt-1">
+          Active & Past <span className="italic text-[#E5CB86]">Contracts</span>
+        </h1>
+        <p className="text-xs text-[#BFD0C6] mt-1">Access dedicated project workspaces, milestone reviews, and deliverable handoffs</p>
       </div>
 
       {contracts.length === 0 ? (
-        <div className="bg-white p-12 text-center rounded-3xl border border-slate-200 space-y-4">
-          <CheckSquare className="w-12 h-12 text-slate-300 mx-auto" />
-          <p className="text-sm font-semibold text-slate-700">No contracts active at this time.</p>
+        <div className="bg-[#114A39] p-12 text-center rounded-[12px] border border-[#1F5A46] space-y-4">
+          <CheckSquare className="w-12 h-12 text-[#9DB5A8] mx-auto" />
+          <p className="text-sm font-medium text-[#F6F1E4]">No contracts active at this time.</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -38,47 +43,47 @@ export const FreelancerContractsListPage: React.FC = () => {
             return (
               <div
                 key={c.id}
-                className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 hover:border-slate-300 transition-all"
+                className="bg-[#114A39] p-6 rounded-[12px] border border-[#1F5A46] space-y-4 hover:border-[#2B6D56] transition-all"
               >
                 <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                   <div className="space-y-1 max-w-2xl">
                     <div className="flex items-center gap-2">
-                      <span className="capitalize text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                      <span className="capitalize text-[10px] font-semibold px-2.5 py-0.5 rounded-[4px] border border-[#7BC49A] text-[#7BC49A] bg-[#072A20]">
                         {c.status.replace('_', ' ')}
                       </span>
-                      <span className="text-xs text-slate-400">Started {new Date(c.createdAt).toLocaleDateString()}</span>
+                      <span className="text-xs text-[#9DB5A8]">Started {new Date(c.createdAt).toLocaleDateString()}</span>
                     </div>
 
                     <Link
                       to={`/freelancer/contracts/${c.id}`}
-                      className="text-base font-bold text-slate-900 hover:text-brand-indigo block"
+                      className="font-serif text-xl font-medium text-[#F6F1E4] hover:text-[#E5CB86] block transition-colors"
                     >
                       {c.title}
                     </Link>
 
-                    <div className="text-xs text-slate-500">
-                      Client: <span className="font-semibold text-slate-700">{c.business?.companyName || 'TechVentures AI'}</span>
+                    <div className="text-xs text-[#BFD0C6]">
+                      Client: <span className="font-medium text-[#F6F1E4]">{c.business?.companyName || 'TechVentures AI'}</span>
                     </div>
                   </div>
 
                   <div className="text-left sm:text-right flex-shrink-0">
-                    <div className="text-xl font-extrabold text-brand-navy">${c.totalAmount.toLocaleString()}</div>
-                    <div className="text-[11px] text-slate-400">
+                    <div className="font-serif text-2xl font-medium text-[#E5CB86]">${c.totalAmount.toLocaleString()}</div>
+                    <div className="text-[11px] text-[#9DB5A8]">
                       {completed}/{c.milestones.length} milestones complete
                     </div>
                   </div>
                 </div>
 
                 {/* Progress bar */}
-                <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div className="bg-brand-indigo h-full rounded-full" style={{ width: `${progress}%` }} />
+                <div className="w-full bg-[#072A20] h-2 rounded-full overflow-hidden border border-[#1F5A46]">
+                  <div className="bg-[#C9A24B] h-full rounded-full transition-all" style={{ width: `${progress}%` }} />
                 </div>
 
                 <div className="pt-2 flex items-center justify-between text-xs">
-                  <span className="text-slate-500 font-medium">{progress}% Milestone Progress</span>
+                  <span className="text-[#9DB5A8] font-medium">{progress}% Milestone Progress</span>
                   <Link
                     to={`/freelancer/contracts/${c.id}`}
-                    className="px-4 py-2 rounded-xl bg-brand-navy hover:bg-slate-800 text-white font-bold text-xs transition-colors flex items-center gap-1.5 shadow-sm"
+                    className="px-4 py-2 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-medium text-xs transition-colors flex items-center gap-1.5"
                   >
                     <span>Open Workspace</span>
                     <ArrowRight className="w-3.5 h-3.5" />

@@ -23,7 +23,12 @@ Compatibility scores ($0-100\%$) are calculated using an open, documented formul
 - **Budget Feasibility (10%)**: Rate compatibility with project budget boundaries.
 - **Availability (5%)**: Full-time vs part-time allocation.
 
-### 3. Active Contract Workspaces
+### 3. Turnkey Solution Blueprints & AI Scope Co-Pilot
+- **Conversational Project Scoping**: Natural language prompt input that analyzes intent (e.g. *"tell me about full stack"*, *"real-time voice concierge"*) and auto-synthesizes a 3-phase milestone escrow scope with budget and delivery estimates.
+- **Productized Milestone Blueprints**: Pre-architected solution packages across RAG Knowledge Agents, Voice AI, Next.js 15 SaaS MVP, n8n Automations, Figma Design Systems, and AI Security Guardrails.
+- **100% Escrow Protected**: Unlike commodity gig platforms, every turnkey package is divided into funded milestone phases that release only upon verified deliverable inspection.
+
+### 4. Active Contract Workspaces
 Active contracts feature a dedicated collaboration workspace:
 - Multi-phase milestone progress tracking
 - Deliverable submission links & version notes
@@ -32,7 +37,7 @@ Active contracts feature a dedicated collaboration workspace:
 - Milestone-specific escrow payout release
 - Post-completion mutual verified reviews
 
-### 4. Zero-Setup Local Persistence
+### 5. Zero-Setup Local Persistence
 The backend runs out of the box with zero external database installation required, utilizing an automatic disk-backed persistent store (`data/store.json`), while also supporting MongoDB Atlas via `MONGODB_URI`.
 
 ---

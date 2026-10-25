@@ -13,89 +13,112 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
-      <div className="text-center max-w-2xl mx-auto space-y-3">
-        <h1 className="text-4xl font-extrabold text-brand-navy">Contact & Support</h1>
-        <p className="text-slate-600 text-sm">
-          Have questions about SkillBridge, need custom enterprise agreements, or require assistance?
-        </p>
-      </div>
-
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-          <h2 className="font-bold text-lg text-slate-900">Send Us a Message</h2>
-          {submitted ? (
-            <div className="p-6 rounded-2xl bg-emerald-50 text-emerald-800 text-xs space-y-2 text-center">
-              <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
-              <div className="font-bold text-sm">Message Received!</div>
-              <p>Our platform operations team will respond to your inquiry within 24 hours.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1">Your Name</label>
-                <input
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
-                  placeholder="e.g. John Doe"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1">Email Address</label>
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
-                  placeholder="john@example.com"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1">Message</label>
-                <textarea
-                  rows={4}
-                  required
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
-                  placeholder="How can we help you?"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-3 rounded-xl bg-brand-navy hover:bg-slate-800 text-white font-bold text-xs transition-colors"
-              >
-                Submit Message
-              </button>
-            </form>
-          )}
+    <div className="bg-[#0B3D2E] text-[#F6F1E4] min-h-screen py-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C9A24B]">
+            CONCIERGE INQUIRIES
+          </div>
+          <h1 className="font-serif text-4xl sm:text-5xl font-medium text-[#F6F1E4]">Contact & Support</h1>
+          <p className="text-xs sm:text-sm text-[#BFD0C6] leading-relaxed">
+            Have questions about enterprise terms, custom milestones, or require concierge assistance?
+          </p>
         </div>
 
-        <div className="bg-slate-900 text-white p-8 rounded-3xl space-y-6 flex flex-col justify-between">
-          <div className="space-y-6">
-            <h2 className="font-bold text-lg text-white">Platform Headquarters</h2>
-            <div className="space-y-4 text-xs text-slate-300">
-              <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-brand-teal" />
-                <span>support@skillbridge.io</span>
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-[#114A39] p-8 rounded-[12px] border border-[#1F5A46] shadow-sm space-y-6">
+            <h2 className="font-serif text-2xl font-medium text-[#F6F1E4]">Send a Message</h2>
+            {submitted ? (
+              <div className="p-6 rounded-[8px] bg-[#072A20] text-[#7BC49A] text-xs space-y-2 text-center border border-[#1F5A46]">
+                <CheckCircle2 className="w-8 h-8 text-[#7BC49A] mx-auto" />
+                <div className="font-serif text-base text-[#F6F1E4]">Inquiry Dispatched</div>
+                <p className="text-[#BFD0C6]">Our concierge team will respond directly to your inquiry within 24 hours.</p>
               </div>
-              <div className="flex items-center gap-3">
-                <MapPin className="w-4 h-4 text-brand-teal" />
-                <span>500 Howard Street, Suite 400, San Francisco, CA 94105</span>
-              </div>
-            </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-semibold text-[#F6F1E4] mb-1.5">Your Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full p-2.5 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
+                    placeholder="e.g. Liam Vance"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-[#F6F1E4] mb-1.5">Email Address</label>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full p-2.5 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
+                    placeholder="liam@company.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-[#F6F1E4] mb-1.5">Message</label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className="w-full p-2.5 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
+                    placeholder="Describe your project, question, or organization size..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-2.5 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-semibold text-xs transition-colors shadow-sm"
+                >
+                  Send Inquiry
+                </button>
+              </form>
+            )}
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/10 text-xs text-slate-300">
-            <span className="font-bold text-white block mb-1">Live Concierge Support:</span>
-            Enterprise clients have access to 24/7 dedicated Slack/Discord channel integration.
+          <div className="bg-[#114A39] p-8 rounded-[12px] border border-[#1F5A46] shadow-sm space-y-6 flex flex-col justify-between">
+            <div className="space-y-6">
+              <h2 className="font-serif text-2xl font-medium text-[#F6F1E4]">Platform Office</h2>
+              <div className="space-y-4 text-xs text-[#BFD0C6]">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-[#C9A24B] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-medium text-[#F6F1E4] block">Headquarters</span>
+                    SkillBridge Technologies Inc.<br />
+                    500 Howard Street, Suite 400<br />
+                    San Francisco, CA 94105
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Mail className="w-4 h-4 text-[#C9A24B] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-medium text-[#F6F1E4] block">Direct Inquiries</span>
+                    support@skillbridge.io<br />
+                    enterprise@skillbridge.io
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <MessageSquare className="w-4 h-4 text-[#C9A24B] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-medium text-[#F6F1E4] block">Hours</span>
+                    Monday – Friday, 8:00 AM – 6:00 PM PT
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-[8px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#BFD0C6]">
+              <span className="text-[#E5CB86] font-medium block mb-1">Dispute Resolution Policy:</span>
+              All active contracts are protected by our neutral arbitration process with escrow disbursement safety.
+            </div>
           </div>
         </div>
       </div>

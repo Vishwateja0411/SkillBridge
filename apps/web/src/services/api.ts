@@ -111,8 +111,15 @@ export const api = {
   getAdminAuditLogs: () => request('/admin/audit-logs'),
   resetSeedData: () => request('/admin/reset-seed', { method: 'POST' }),
 
-  // AI Assistant
+  // AI Assistant & RAG Engine
   enhanceProjectDescription: (data: any) => request('/ai/enhance-project-description', { method: 'POST', body: JSON.stringify(data) }),
   extractSkills: (text: string) => request('/ai/extract-skills', { method: 'POST', body: JSON.stringify({ text }) }),
   getProposalDraft: (data: any) => request('/ai/proposal-assistant', { method: 'POST', body: JSON.stringify(data) }),
+  ragScopeProject: (data: { prompt: string; category?: string }) => request('/ai/rag/scope-project', { method: 'POST', body: JSON.stringify(data) }),
+  ragVerifyMilestone: (data: { milestoneTitle: string; deliverablesSpec: string; submissionNotes?: string; deliverableUrl?: string }) =>
+    request('/ai/rag/verify-milestone', { method: 'POST', body: JSON.stringify(data) }),
+  ragQuery: (data: { query: string }) => request('/ai/rag/query', { method: 'POST', body: JSON.stringify(data) }),
+  getAiRagStatus: () => request('/ai/rag/status'),
+  configureAiKey: (data: { apiKey: string; provider?: string }) => request('/ai/rag/configure-key', { method: 'POST', body: JSON.stringify(data) }),
 };
+

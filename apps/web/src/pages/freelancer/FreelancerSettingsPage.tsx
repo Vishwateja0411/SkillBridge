@@ -34,47 +34,52 @@ export const FreelancerSettingsPage: React.FC = () => {
   return (
     <div className="max-w-2xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Freelancer Profile Settings</h1>
-        <p className="text-xs text-slate-500 mt-1">Update your professional headline, rates, and availability</p>
+        <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C9A24B]">
+          ACCOUNT CONFIGURATION
+        </div>
+        <h1 className="font-serif text-3xl font-medium text-[#F6F1E4] mt-1">
+          Freelancer Profile <span className="italic text-[#E5CB86]">Settings</span>
+        </h1>
+        <p className="text-xs text-[#BFD0C6] mt-1">Update your professional headline, rates, and availability</p>
       </div>
 
       {saved && (
-        <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 text-xs flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+        <div className="p-3.5 rounded-[6px] bg-[#114A39] border border-[#7BC49A] text-[#7BC49A] text-xs flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-[#7BC49A]" />
           <span>Profile changes updated successfully!</span>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="bg-white p-7 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+      <form onSubmit={handleSubmit} className="bg-[#114A39] p-7 rounded-[12px] border border-[#1F5A46] space-y-4">
         <div>
-          <label className="block text-xs font-bold text-slate-800 mb-1">Professional Headline</label>
+          <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Professional Headline</label>
           <input
             type="text"
             required
             value={headline}
             onChange={(e) => setHeadline(e.target.value)}
-            className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+            className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold text-slate-800 mb-1">Hourly Rate ($ USD)</label>
+            <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Hourly Rate ($ USD)</label>
             <input
               type="number"
               required
               value={hourlyRate}
               onChange={(e) => setHourlyRate(e.target.value)}
-              className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+              className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-800 mb-1">Availability</label>
+            <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Availability</label>
             <select
               value={availability}
               onChange={(e) => setAvailability(e.target.value as any)}
-              className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 bg-white"
+              className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
             >
               <option value="full_time">Full Time (40h/week)</option>
               <option value="part_time">Part Time (20h/week)</option>
@@ -84,29 +89,29 @@ export const FreelancerSettingsPage: React.FC = () => {
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-800 mb-1">Location</label>
+          <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Location</label>
           <input
             type="text"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+            className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-800 mb-1">Biography / About</label>
+          <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Biography / About</label>
           <textarea
             rows={5}
             value={bio}
             onChange={(e) => setBio(e.target.value)}
-            className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+            className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none focus:border-[#C9A24B]"
           />
         </div>
 
         <div className="pt-2">
           <button
             type="submit"
-            className="px-6 py-2.5 rounded-xl bg-brand-navy hover:bg-slate-800 text-white font-bold text-xs transition-colors"
+            className="px-6 py-2.5 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-medium text-xs transition-colors"
           >
             Save Changes
           </button>

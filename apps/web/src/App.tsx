@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate, Link } from 'react-router-dom';
+import { ScrollToTop } from './components/common/ScrollToTop';
 
 // Layouts
 import { PublicLayout } from './components/layout/PublicLayout';
@@ -72,7 +73,9 @@ function NotFoundPage() {
 
 export const App: React.FC = () => {
   return (
-    <Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
       {/* Public Pages */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<LandingPage />} />
@@ -139,6 +142,7 @@ export const App: React.FC = () => {
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
+    </>
   );
 };
 

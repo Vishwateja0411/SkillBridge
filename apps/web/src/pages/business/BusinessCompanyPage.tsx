@@ -39,92 +39,96 @@ export const BusinessCompanyPage: React.FC = () => {
   return (
     <div className="max-w-2xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Company Profile</h1>
-        <p className="text-xs text-slate-500 mt-1">Manage public organization details and branding visible to candidates</p>
+        <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C9A24B]">
+          ORGANIZATION IDENTITY
+        </div>
+        <h1 className="font-serif text-3xl font-medium text-[#F6F1E4] mt-1">
+          Company <span className="italic text-[#E5CB86]">Profile</span>
+        </h1>
+        <p className="text-xs text-[#BFD0C6] mt-1">Manage public organization details and branding visible to candidates</p>
       </div>
 
       {saved && (
-        <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 text-xs flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+        <div className="p-3.5 rounded-[6px] bg-[#114A39] border border-[#7BC49A] text-[#7BC49A] text-xs flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-[#7BC49A]" />
           <span>Company profile updated successfully!</span>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-5">
+      <form onSubmit={handleSubmit} className="bg-[#114A39] p-8 rounded-[12px] border border-[#1F5A46] space-y-5">
         <div>
-          <label className="block text-xs font-bold text-slate-800 mb-1">Company Name</label>
+          <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Company Name</label>
           <input
             type="text"
             required
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
-            className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 font-semibold focus:outline-none focus:border-brand-indigo"
+            className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold text-slate-800 mb-1">Industry</label>
+            <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Industry</label>
             <input
               type="text"
               required
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
-              className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+              className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-800 mb-1">Company Size</label>
+            <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Company Size</label>
             <input
               type="text"
               required
               value={companySize}
               onChange={(e) => setCompanySize(e.target.value)}
-              className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+              className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold text-slate-800 mb-1">Website URL</label>
+            <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Website URL</label>
             <input
               type="url"
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
-              className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+              className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-800 mb-1">Location</label>
+            <label className="block text-xs font-medium text-[#F6F1E4] mb-1">Location</label>
             <input
               type="text"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+              className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-slate-800 mb-1">About Company</label>
+          <label className="block text-xs font-medium text-[#F6F1E4] mb-1">About Company</label>
           <textarea
-            rows={5}
-            required
+            rows={4}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-brand-indigo"
+            className="w-full p-3 rounded-[6px] bg-[#072A20] border border-[#1F5A46] text-xs text-[#F6F1E4] focus:outline-none focus:border-[#C9A24B]"
           />
         </div>
 
         <div className="pt-2">
           <button
             type="submit"
-            className="px-6 py-2.5 rounded-xl bg-brand-navy hover:bg-slate-800 text-white font-bold text-xs transition-colors"
+            className="px-6 py-2.5 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-medium text-xs transition-colors"
           >
-            Save Company Profile
+            Save Profile
           </button>
         </div>
       </form>

@@ -4,37 +4,193 @@
 
 @layer base {
   body {
-    @apply bg-[#F8FAFC] text-[#0F172A] font-sans antialiased;
+    background-color: #0B3D2E;
+    color: #F6F1E4;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  h1, h2, h3, h4, .font-serif-heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
   }
 }
 
-/* Custom Scrollbars */
+/* Custom Heritage Scrollbars */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #072A20;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: #1F5A46;
+  border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #2B6D56;
 }
 
-/* Glassmorphism and subtle gradients */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+/* Eyebrow Label Utility */
+.eyebrow-gold {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #C9A24B;
 }
 
-.gradient-hero {
-  background: radial-gradient(circle at 50% 10%, rgba(79, 70, 229, 0.08) 0%, rgba(20, 184, 166, 0.03) 45%, rgba(248, 250, 252, 0) 70%);
+/* Subtle Hero Ambient Highlight */
+.hero-ambient-highlight {
+  background: radial-gradient(circle at 75% 40%, rgba(17, 74, 57, 0.5) 0%, rgba(11, 61, 46, 0) 65%);
 }
 
-.gradient-card {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+/* Smooth Focus Ring */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #C9A24B;
+}
+
+/* Ensure sticky navbar (64px) doesn't obscure anchor-targeted sections */
+[id] {
+  scroll-margin-top: 96px;
+}
+
+/* Subtle drift for authentication bridge illustration */
+@keyframes bridgeDrift {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0.4deg);
+  }
+}
+
+.animate-bridge-drift {
+  animation: bridgeDrift 14s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* Animated golden light beam flowing across suspension arch */
+@keyframes beamFlow {
+  0% {
+    stroke-dashoffset: 410;
+  }
+  100% {
+    stroke-dashoffset: -410;
+  }
+}
+
+.animate-beam-flow {
+  animation: beamFlow 4.5s linear infinite;
+}
+
+/* Node pulse effect */
+@keyframes nodePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.65;
+  }
+}
+
+.animate-node-pulse {
+  animation: nodePulse 2.8s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* Apex crown expanding ping */
+@keyframes pingSlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: pingSlow 3.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  transform-origin: 230px 82px;
+}
+
+/* Twinkle animations for constellation nodes */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.animate-twinkle-delay-1 {
+  animation: twinkle 3s ease-in-out infinite;
+  animation-delay: 1s;
+  transform-origin: center center;
+}
+
+.animate-twinkle-delay-2 {
+  animation: twinkle 3s ease-in-out infinite;
+  animation-delay: 2s;
+  transform-origin: center center;
+}
+
+/* Slow breathing pulse for aura */
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 5s ease-in-out infinite;
+  transform-origin: 230px 82px;
+}
+
+/* Ensure placeholder color is white across all browsers */
+input.placeholder-white::placeholder,
+.placeholder-white::placeholder,
+input::placeholder {
+  color: #FFFFFF !important;
+  opacity: 0.9 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bridge-drift,
+  .animate-beam-flow,
+  .animate-node-pulse,
+  .animate-ping-slow,
+  .animate-twinkle,
+  .animate-twinkle-delay-1,
+  .animate-twinkle-delay-2,
+  .animate-pulse-slow {
+    animation: none !important;
+  }
 }
