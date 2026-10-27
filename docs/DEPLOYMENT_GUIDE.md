@@ -49,20 +49,19 @@ This guide walks you step-by-step through deploying SkillBridge to the cloud so 
    * **Build Command:** `npm run build` *(Vercel auto-detects this)*
    * **Output Directory:** `dist` *(Vercel auto-detects this)*
 5. Under **Environment Variables**, add:
-   * **`VITE_API_URL`** = Your Render backend URL from Part 1
-     *(e.g., `https://skillbridge-api.onrender.com`)*
+   * **`VITE_API_URL`** = `https://skillbridge-api-hd8m.onrender.com`
 6. Click **Deploy**.
-7. In ~45 seconds, Vercel will give you your live production URL:
-   👉 **`https://skillbridge-yourname.vercel.app`**
+7. In ~45 seconds, Vercel gives you your live production URL:
+   👉 **`https://skill-bridge-six-peach.vercel.app`**
 
 ---
 
 ### Part 3: Final Linkage
 
-1. Go back to your **Render** dashboard ➔ **`skillbridge-api`** ➔ **Environment**.
-2. Update the `CLIENT_URL` variable to your new Vercel URL:
-   * `CLIENT_URL` = `https://skillbridge-yourname.vercel.app`
-3. Click **Save Changes** (Render will automatically re-deploy in 20 seconds).
+1. Go back to your **Render** dashboard ➔ **`SkillBridge-api`** ➔ **Environment**.
+2. Ensure the `CLIENT_URL` variable is set to your Vercel URL:
+   * `CLIENT_URL` = `https://skill-bridge-six-peach.vercel.app`
+3. Click **Save Changes** (Render will automatically apply changes in 20 seconds).
 
 ---
 
