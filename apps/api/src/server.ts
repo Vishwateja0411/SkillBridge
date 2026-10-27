@@ -21,12 +21,36 @@ import aiRouter from './routes/ai.router.js';
 const app = express();
 const server = http.createServer(app);
 
+// Disable X-Powered-By to prevent framework information disclosure
+app.disable('x-powered-by');
+
+// Security Headers Middleware
+app.use((_req: Request, res: Response, next: NextFunction) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  next();
+});
+
 // Initialize Socket.io
 initSockets(server, CONFIG.CLIENT_URL);
 
 // Middlewares
 app.use(cors({
-  origin: [CONFIG.CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:5174', 'http://127.0.0.1:5174'],
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (
+      origin === CONFIG.CLIENT_URL ||
+      origin === 'https://skill-bridge-six-peach.vercel.app' ||
+      origin.endsWith('.vercel.app') ||
+      origin.includes('localhost') ||
+      origin.includes('127.0.0.1')
+    ) {
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
