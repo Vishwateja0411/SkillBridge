@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: skillbridge-api
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build --workspace=@skillbridge/shared && npm run build --workspace=@skillbridge/api
+    startCommand: node apps/api/dist/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: JWT_SECRET
+        value: skillbridge-super-secret-jwt-key-2026-production
+      - key: CLIENT_URL
+        value: http://localhost:5173
+      - key: GROQ_API_KEY
+        sync: false
