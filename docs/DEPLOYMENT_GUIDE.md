@@ -19,7 +19,7 @@ This guide walks you step-by-step through deploying SkillBridge to the cloud so 
    * **Runtime:** `Node`
    * **Build Command:**
      ```bash
-     npm install && npm run build --workspace=@skillbridge/shared && npm run build --workspace=@skillbridge/api
+     npm install --include=dev && npm run build --workspace=@skillbridge/shared && npm run build --workspace=@skillbridge/api
      ```
    * **Start Command:**
      ```bash
@@ -31,7 +31,7 @@ This guide walks you step-by-step through deploying SkillBridge to the cloud so 
    * `PORT` = `5000`
    * `JWT_SECRET` = `skillbridge-production-secret-jwt-key-2026`
    * `GROQ_API_KEY` = `your_groq_api_key_here` (from your .env file)
-   * `CLIENT_URL` = `https://your-vercel-app.vercel.app` *(update this after Step 2)*
+   * `CLIENT_URL` = `https://skill-bridge-six-peach.vercel.app`
 6. Click **Create Web Service**.
 7. Once deployed, Render will give you your backend URL, for example:
    👉 **`https://skillbridge-api.onrender.com`**
