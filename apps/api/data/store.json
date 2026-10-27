@@ -4,7 +4,7 @@
       "id": "user-business-1",
       "name": "Alex Chen",
       "email": "client@skillbridge.io",
-      "passwordHash": "$2a$10$k5h4W.1UIBS1HYaUJXBJLu6103T3MRd7Dm4UlcjPQ10SXHf1VOgxG",
+      "passwordHash": "$2a$10$ByN02a68fVxQaZwa8mESMet50Bq2ifaCaJCN3UNHYoN4usoUt00sG",
       "role": "business",
       "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
       "isVerified": true,
@@ -14,7 +14,7 @@
       "id": "user-freelancer-1",
       "name": "Sarah Jenkins",
       "email": "sarah@skillbridge.io",
-      "passwordHash": "$2a$10$k5h4W.1UIBS1HYaUJXBJLu6103T3MRd7Dm4UlcjPQ10SXHf1VOgxG",
+      "passwordHash": "$2a$10$ByN02a68fVxQaZwa8mESMet50Bq2ifaCaJCN3UNHYoN4usoUt00sG",
       "role": "freelancer",
       "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
       "isVerified": true,
@@ -24,7 +24,7 @@
       "id": "user-freelancer-2",
       "name": "Elena Rostova",
       "email": "elena@skillbridge.io",
-      "passwordHash": "$2a$10$k5h4W.1UIBS1HYaUJXBJLu6103T3MRd7Dm4UlcjPQ10SXHf1VOgxG",
+      "passwordHash": "$2a$10$ByN02a68fVxQaZwa8mESMet50Bq2ifaCaJCN3UNHYoN4usoUt00sG",
       "role": "freelancer",
       "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
       "isVerified": true,
@@ -34,7 +34,7 @@
       "id": "user-freelancer-3",
       "name": "Marcus Vance",
       "email": "marcus@skillbridge.io",
-      "passwordHash": "$2a$10$k5h4W.1UIBS1HYaUJXBJLu6103T3MRd7Dm4UlcjPQ10SXHf1VOgxG",
+      "passwordHash": "$2a$10$ByN02a68fVxQaZwa8mESMet50Bq2ifaCaJCN3UNHYoN4usoUt00sG",
       "role": "freelancer",
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
       "isVerified": true,
@@ -44,7 +44,7 @@
       "id": "user-admin-1",
       "name": "SkillBridge Admin",
       "email": "admin@skillbridge.io",
-      "passwordHash": "$2a$10$AOpJ.x5lpHvqYhP9S6ZSoudilJdjeDQpFxhY7wW7slcVyVXYZI6pG",
+      "passwordHash": "$2a$10$XgHUwomLLiEzamJAfF2XWejcPWSAR3X8KWOTGP0oSBCwYcAVIN4Lm",
       "role": "admin",
       "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80",
       "isVerified": true,
@@ -685,7 +685,7 @@
           "deliverableNotes": "Retina charts rendered with 60fps smoothing.",
           "submittedAt": "2026-10-08T18:20:00.000Z",
           "revisionNotes": "Please check high-dpi chart rendering",
-          "paidAt": "2026-10-25T06:40:08.759Z"
+          "paidAt": "2026-10-27T05:43:28.399Z"
         },
         {
           "id": "ms-3",
@@ -761,13 +761,13 @@
   ],
   "reviews": [
     {
-      "id": "rev-test-1792910408760",
+      "id": "rev-test-1793079808400",
       "contractId": "contract-1",
       "reviewerId": "user-business-1",
       "reviewedUserId": "user-freelancer-1",
       "rating": 5,
       "feedback": "Outstanding technical architecture and proactive communication.",
-      "createdAt": "2026-10-25T06:40:08.760Z"
+      "createdAt": "2026-10-27T05:43:28.400Z"
     },
     {
       "id": "rev-1",
@@ -782,14 +782,14 @@
   "disputes": [],
   "auditLogs": [
     {
-      "id": "audit-1792910408765",
+      "id": "audit-1793079808402",
       "adminId": "user-admin-1",
       "adminEmail": "admin@skillbridge.io",
       "action": "TEST_SUITE_VERIFICATION",
       "targetType": "Contract",
       "targetId": "contract-1",
       "details": "Automated test suite verification executed.",
-      "createdAt": "2026-10-25T06:40:08.765Z"
+      "createdAt": "2026-10-27T05:43:28.402Z"
     },
     {
       "id": "audit-1",
