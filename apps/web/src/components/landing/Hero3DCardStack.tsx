@@ -2,9 +2,14 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
-export const Hero3DCardStack: React.FC = () => {
+export interface Hero3DCardStackProps {
+  role?: 'freelancer' | 'business' | string | null;
+}
+
+export const Hero3DCardStack: React.FC<Hero3DCardStackProps> = ({ role }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const isTalent = role === 'freelancer';
 
   // Pointer tracking
   const mouseX = useMotionValue(0);
@@ -105,20 +110,22 @@ export const Hero3DCardStack: React.FC = () => {
 
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-full bg-[#0B3D2E] text-[#F6F1E4] flex items-center justify-center font-serif text-base font-medium flex-shrink-0">
-              AM
+              {isTalent ? 'TC' : 'AM'}
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-serif text-base font-medium text-[#0B3D2E] leading-tight">
-                Aarav Mehta
+                {isTalent ? 'TechVentures AI (Client)' : 'Aarav Mehta'}
               </h3>
-              <p className="text-[11px] text-[#4F6B5E] mt-0.5">Lead Product Designer</p>
+              <p className="text-[11px] text-[#4F6B5E] mt-0.5">
+                {isTalent ? 'Enterprise Client • San Francisco' : 'Lead Product Designer'}
+              </p>
 
               <div className="flex items-center gap-1.5 mt-2">
                 <span className="text-[10px] font-medium bg-[#EAE4D5] text-[#0B3D2E] px-2 py-0.5 rounded-[4px] border border-[#DDD5C3]">
-                  UI/UX
+                  {isTalent ? 'Next.js' : 'UI/UX'}
                 </span>
                 <span className="text-[10px] font-medium bg-[#EAE4D5] text-[#0B3D2E] px-2 py-0.5 rounded-[4px] border border-[#DDD5C3]">
-                  Figma
+                  {isTalent ? 'AI Engineering' : 'Figma'}
                 </span>
               </div>
             </div>
@@ -129,9 +136,11 @@ export const Hero3DCardStack: React.FC = () => {
               <div className="w-3.5 h-3.5 border border-[#C9A24B] bg-[#C9A24B]/15 flex items-center justify-center rounded-[2px]">
                 <Check className="w-2.5 h-2.5 text-[#C9A24B]" />
               </div>
-              <span>Verified</span>
+              <span>{isTalent ? 'Escrow Ready' : 'Verified'}</span>
             </div>
-            <span className="text-[#4F6B5E] text-[10px]">Sample data</span>
+            <span className="text-[#4F6B5E] text-[10px]">
+              {isTalent ? 'Avg Budget $4,500' : 'Verified specialist'}
+            </span>
           </div>
         </motion.div>
 
@@ -169,13 +178,15 @@ export const Hero3DCardStack: React.FC = () => {
           )}
 
           <div className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#C9A24B]">
-            OPEN PROJECT
+            {isTalent ? 'RECOMMENDED CONTRACT' : 'OPEN PROJECT'}
           </div>
           <div>
             <h3 className="font-serif text-lg font-medium text-[#F6F1E4] leading-snug">
-              Redesign our onboarding
+              {isTalent ? 'AI Analytics Dashboard Hub' : 'Redesign our onboarding'}
             </h3>
-            <p className="text-[11px] text-[#BFD0C6] mt-0.5">3 milestones, 6 weeks</p>
+            <p className="text-[11px] text-[#BFD0C6] mt-0.5">
+              {isTalent ? '3 milestones, $4,000–$5,000' : '3 milestones, 6 weeks'}
+            </p>
           </div>
 
           {/* 3-segment milestone progress bar (Viewport Animated) */}
@@ -199,10 +210,18 @@ export const Hero3DCardStack: React.FC = () => {
                   className="h-full bg-[#C9A24B] rounded-full"
                 />
               </div>
-              <div className="h-1.5 rounded-full bg-[#1F5A46]" title="Milestone 3: In Progress" />
+              <div className="h-1.5 rounded-full bg-[#1F5A46] overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: isTalent ? '100%' : '30%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.9, delay: 0.8, ease: 'easeOut' }}
+                  className="h-full bg-[#C9A24B] rounded-full"
+                />
+              </div>
             </div>
             <div className="flex justify-between text-[10px] text-[#9DB5A8] mt-1.5">
-              <span>2 of 3 milestones funded</span>
+              <span>{isTalent ? '3 of 3 milestones funded' : '2 of 3 milestones funded'}</span>
               <span className="text-[#E5CB86] font-medium">Escrow Safe</span>
             </div>
           </div>
@@ -242,17 +261,19 @@ export const Hero3DCardStack: React.FC = () => {
 
           <div>
             <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#9DB5A8]">
-              MATCH SCORE (DEMO)
+              {isTalent ? 'YOUR MATCH SCORE' : '6-FACTOR MATCH SCORE'}
             </div>
             <div className="font-serif text-4xl sm:text-5xl font-medium text-[#E5CB86] mt-1">
-              92%
+              {isTalent ? '96%' : '92%'}
             </div>
           </div>
           <div className="text-right">
             <span className="inline-block text-xs text-[#BFD0C6] border border-[#1F5A46] bg-[#114A39]/60 px-2.5 py-1 rounded-[4px]">
-              Rule-based
+              {isTalent ? 'Top 2% Rank' : 'AI-Weighted'}
             </span>
-            <p className="text-[10px] text-[#9DB5A8] mt-1.5">Skills & experience match</p>
+            <p className="text-[10px] text-[#9DB5A8] mt-1.5">
+              {isTalent ? 'Skills & experience match' : 'Skills & track record'}
+            </p>
           </div>
         </motion.div>
       </motion.div>

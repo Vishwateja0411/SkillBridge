@@ -97,9 +97,14 @@ export const AuthBladePage: React.FC<AuthBladePageProps> = ({ initialMode = 'sig
     setLoading(true);
 
     try {
-      await login(signInIdentifier.trim(), signInPassword);
-      // Retrieve stored user or default redirect
-      navigate('/business/dashboard');
+      const loggedUser = await login(signInIdentifier.trim(), signInPassword);
+      if (loggedUser?.role === 'freelancer') {
+        navigate('/freelancer/dashboard');
+      } else if (loggedUser?.role === 'admin') {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/business/dashboard');
+      }
     } catch (err: any) {
       setErrorMessage(err.message || 'Invalid username or password');
     } finally {

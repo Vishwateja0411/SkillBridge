@@ -49,6 +49,36 @@
       "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80",
       "isVerified": true,
       "createdAt": "2025-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "user-1793163369319",
+      "name": "bob",
+      "email": "bob@gmail.com",
+      "passwordHash": "$2a$10$OngQHaUrilqDLAsw2bDQrejL2RSlIxIAPoEsSf9Rg73.L23ecDZuS",
+      "role": "freelancer",
+      "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=bob",
+      "isVerified": false,
+      "createdAt": "2026-10-28T04:56:09.319Z"
+    },
+    {
+      "id": "user-1793168783852",
+      "name": "Test Talent",
+      "email": "talent_test1@example.com",
+      "passwordHash": "$2a$10$2LouRrFuPGCAptBj6BpbceXZ2hphFx/xXhngQV1aPwQWYcR.dggOW",
+      "role": "freelancer",
+      "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=Test%20Talent",
+      "isVerified": false,
+      "createdAt": "2026-10-28T06:26:23.852Z"
+    },
+    {
+      "id": "user-1793169312575",
+      "name": "alice",
+      "email": "alice@gmail.com",
+      "passwordHash": "$2a$10$dYTIevFHMG8M5bq4TaF8UOE2CK8HIzMKP0fGjlINvtJ6K5scIm6py",
+      "role": "business",
+      "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=alice",
+      "isVerified": false,
+      "createdAt": "2026-10-28T06:35:12.575Z"
     }
   ],
   "freelancerProfiles": [
@@ -301,6 +331,76 @@
         "Certified Kubernetes Administrator (CKA)"
       ],
       "verificationStatus": "verified"
+    },
+    {
+      "id": "fp-1793163369322",
+      "userId": "user-1793163369319",
+      "headline": "Senior Full-Stack Engineer | React, Node.js & Cloud",
+      "bio": "Passionate about crafting fast, resilient web applications and intuitive interfaces.",
+      "skills": [
+        {
+          "name": "React",
+          "level": "expert",
+          "yearsExperience": 5
+        },
+        {
+          "name": "TypeScript",
+          "level": "expert",
+          "yearsExperience": 5
+        },
+        {
+          "name": "Node.js",
+          "level": "expert",
+          "yearsExperience": 5
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": "expert",
+          "yearsExperience": 5
+        },
+        {
+          "name": "AWS",
+          "level": "expert",
+          "yearsExperience": 5
+        },
+        {
+          "name": "Salesforce",
+          "level": "expert",
+          "yearsExperience": 5
+        }
+      ],
+      "hourlyRate": 25,
+      "experienceLevel": "expert",
+      "availability": "full_time",
+      "rating": 5,
+      "reviewCount": 0,
+      "completedProjectsCount": 0,
+      "portfolio": [],
+      "languages": [
+        "English"
+      ],
+      "certifications": [],
+      "verificationStatus": "pending",
+      "location": "San Francisco, CA"
+    },
+    {
+      "id": "fp-1793168783855",
+      "userId": "user-1793168783852",
+      "headline": "Professional Freelancer",
+      "bio": "Welcome to my profile. Add your experience and skills here.",
+      "skills": [],
+      "hourlyRate": 50,
+      "experienceLevel": "intermediate",
+      "availability": "full_time",
+      "rating": 5,
+      "reviewCount": 0,
+      "completedProjectsCount": 0,
+      "portfolio": [],
+      "languages": [
+        "English"
+      ],
+      "certifications": [],
+      "verificationStatus": "unverified"
     }
   ],
   "businessProfiles": [
@@ -317,9 +417,42 @@
       "verified": true,
       "totalSpent": 48500,
       "activeContractsCount": 2
+    },
+    {
+      "id": "bp-1793169312586",
+      "userId": "user-1793169312575",
+      "companyName": "alice's Company",
+      "industry": "Technology",
+      "companySize": "1-10 employees",
+      "description": "New company on SkillBridge.",
+      "verified": false,
+      "totalSpent": 0,
+      "activeContractsCount": 0
     }
   ],
   "projects": [
+    {
+      "id": "proj-1793169386244",
+      "businessId": "bp-1793169312586",
+      "title": "Full Stack developer ",
+      "description": "### Project Objective\nWe are building \"Full Stack developer \" to deliver a scalable, enterprise-grade solution.\n\n### Core Deliverables\n- **Architecture & System Design**: Robust schema definitions, type-safe API contracts, and responsive layout.\n- **Interactive UI & Workflows**: High-performance components with real-time feedback, intuitive UX, and mobile responsiveness.\n- **Quality Assurance & Security**: Input validation, error boundary handlers, and production deployment scripts.\n\n### Ideal Candidate\nA professional with proven hands-on experience in Web Development, excellent communication, and an attention to detail.\n\n### Additional Notes\nPlease provide relevant portfolio references and an outline of your proposed milestone schedule with your application.",
+      "category": "Web Development",
+      "requiredSkills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "experienceLevel": "entry",
+      "budgetType": "fixed",
+      "budgetMin": 3000,
+      "budgetMax": 4500,
+      "duration": "4 weeks",
+      "deadline": "2026-11-27",
+      "workArrangement": "remote",
+      "status": "published",
+      "proposalsCount": 1,
+      "createdAt": "2026-10-28T06:36:26.244Z"
+    },
     {
       "id": "proj-1",
       "businessId": "bp-1",
@@ -340,7 +473,7 @@
       "deadline": "2026-11-30",
       "workArrangement": "remote",
       "status": "in_progress",
-      "proposalsCount": 3,
+      "proposalsCount": 4,
       "createdAt": "2026-09-01T00:00:00.000Z"
     },
     {
@@ -414,6 +547,153 @@
   ],
   "proposals": [
     {
+      "id": "prop-1793169888049",
+      "projectId": "proj-1793169386244",
+      "freelancerId": "fp-1793163369322",
+      "coverLetter": "Hi! I reviewed the requirements for \"Full Stack developer \" and would love to collaborate.\n\nWith my background in React, TypeScript, Node.js, I can build this with clean architecture, great performance, and thorough documentation.\n\nI propose delivering this in clear milestones so you can review progress at every step:\n1. Architecture setup & initial wireframes/contracts\n2. Core features & interactive workflows\n3. Final polish, testing, and production handoff\n\nLooking forward to discussing the specifics!",
+      "proposedPrice": 3000,
+      "estimatedDuration": "4 weeks",
+      "milestoneProposals": [
+        {
+          "title": "Phase 1: Architecture, Core Contracts & Design Approval",
+          "description": "Foundations and initial specifications",
+          "amount": 1050,
+          "estimatedDays": 7
+        },
+        {
+          "title": "Phase 2: Core Feature Implementation & Integration",
+          "description": "Major functional modules and test suites",
+          "amount": 1350,
+          "estimatedDays": 14
+        },
+        {
+          "title": "Phase 3: QA Polish, Final Verification & Delivery",
+          "description": "Documentation and production delivery handoff",
+          "amount": 600,
+          "estimatedDays": 7
+        }
+      ],
+      "status": "accepted",
+      "createdAt": "2026-10-28T06:44:48.049Z",
+      "matchScore": {
+        "totalScore": 78,
+        "factors": {
+          "skillsMatch": {
+            "score": 100,
+            "weight": 35,
+            "matchedSkills": [
+              "react",
+              "typescript",
+              "node.js"
+            ],
+            "missingSkills": []
+          },
+          "experienceMatch": {
+            "score": 95,
+            "weight": 20,
+            "detail": "Exceeds requested experience level (expert)"
+          },
+          "portfolioSimilarity": {
+            "score": 0,
+            "weight": 20,
+            "matchedCount": 0,
+            "detail": "0 relevant past projects found matching required domains"
+          },
+          "ratingScore": {
+            "score": 100,
+            "weight": 10,
+            "rating": 5
+          },
+          "budgetCompatibility": {
+            "score": 90,
+            "weight": 10,
+            "detail": "Rate is compatible with project budget"
+          },
+          "availabilityScore": {
+            "score": 100,
+            "weight": 5,
+            "availability": "full_time"
+          }
+        },
+        "summary": "Matches 3 of 3 skills with 5★ rating and 0 similar portfolio items."
+      },
+      "updatedAt": "2026-10-28T06:45:40.074Z"
+    },
+    {
+      "id": "prop-1793163618964",
+      "projectId": "proj-1",
+      "freelancerId": "fp-1793163369322",
+      "coverLetter": "Hi! I reviewed the requirements for \"AI Analytics Dashboard & Real-Time Customer Insights Hub\" and would love to collaborate.\n\nWith my background in React, TypeScript, Node.js, I can build this with clean architecture, great performance, and thorough documentation.\n\nI propose delivering this in clear milestones so you can review progress at every step:\n1. Architecture setup & initial wireframes/contracts\n2. Core features & interactive workflows\n3. Final polish, testing, and production handoff\n\nLooking forward to discussing the specifics!",
+      "proposedPrice": 4000,
+      "estimatedDuration": "4 weeks",
+      "milestoneProposals": [
+        {
+          "title": "Phase 1: Architecture, Core Contracts & Design Approval",
+          "description": "Foundations and initial specifications",
+          "amount": 1400,
+          "estimatedDays": 7
+        },
+        {
+          "title": "Phase 2: Core Feature Implementation & Integration",
+          "description": "Major functional modules and test suites",
+          "amount": 1800,
+          "estimatedDays": 14
+        },
+        {
+          "title": "Phase 3: QA Polish, Final Verification & Delivery",
+          "description": "Documentation and production delivery handoff",
+          "amount": 800,
+          "estimatedDays": 7
+        }
+      ],
+      "status": "withdrawn",
+      "createdAt": "2026-10-28T05:00:18.964Z",
+      "matchScore": {
+        "totalScore": 79,
+        "factors": {
+          "skillsMatch": {
+            "score": 100,
+            "weight": 35,
+            "matchedSkills": [
+              "react",
+              "typescript",
+              "node.js",
+              "tailwind css"
+            ],
+            "missingSkills": []
+          },
+          "experienceMatch": {
+            "score": 100,
+            "weight": 20,
+            "detail": "Perfect experience level match"
+          },
+          "portfolioSimilarity": {
+            "score": 0,
+            "weight": 20,
+            "matchedCount": 0,
+            "detail": "0 relevant past projects found matching required domains"
+          },
+          "ratingScore": {
+            "score": 100,
+            "weight": 10,
+            "rating": 5
+          },
+          "budgetCompatibility": {
+            "score": 90,
+            "weight": 10,
+            "detail": "Rate is compatible with project budget"
+          },
+          "availabilityScore": {
+            "score": 100,
+            "weight": 5,
+            "availability": "full_time"
+          }
+        },
+        "summary": "Matches 4 of 4 skills with 5★ rating and 0 similar portfolio items."
+      },
+      "updatedAt": "2026-10-28T06:48:13.982Z"
+    },
+    {
       "id": "prop-1",
       "projectId": "proj-1",
       "freelancerId": "fp-1",
@@ -468,9 +748,9 @@
             "detail": "3 relevant past projects found matching required domains"
           },
           "ratingScore": {
-            "score": 99,
+            "score": 100,
             "weight": 10,
-            "rating": 4.95
+            "rating": 5
           },
           "budgetCompatibility": {
             "score": 90,
@@ -483,7 +763,7 @@
             "availability": "full_time"
           }
         },
-        "summary": "Matches 4 of 4 skills with 4.95★ rating and 3 similar portfolio items."
+        "summary": "Matches 4 of 4 skills with 5★ rating and 3 similar portfolio items."
       }
     },
     {
@@ -521,9 +801,9 @@
             "detail": "3 relevant past projects found matching required domains"
           },
           "ratingScore": {
-            "score": 99,
+            "score": 100,
             "weight": 10,
-            "rating": 4.95
+            "rating": 5
           },
           "budgetCompatibility": {
             "score": 90,
@@ -536,7 +816,7 @@
             "availability": "full_time"
           }
         },
-        "summary": "Matches 4 of 4 skills with 4.95★ rating and 3 similar portfolio items."
+        "summary": "Matches 4 of 4 skills with 5★ rating and 3 similar portfolio items."
       }
     },
     {
@@ -647,6 +927,52 @@
   ],
   "contracts": [
     {
+      "id": "contract-1793169940059",
+      "projectId": "proj-1793169386244",
+      "businessId": "bp-1793169312586",
+      "freelancerId": "fp-1793163369322",
+      "proposalId": "prop-1793169888049",
+      "title": "Full Stack developer ",
+      "terms": "Standard SkillBridge Agreement: 100% intellectual property assignment upon milestone release.",
+      "totalAmount": 3000,
+      "status": "active",
+      "milestones": [
+        {
+          "id": "ms-1793169940059-0",
+          "contractId": "contract-1793169940059",
+          "title": "Milestone 1: Architecture, Data Schemas & Wireframes",
+          "description": "",
+          "amount": 1200,
+          "dueDate": "2026-11-15",
+          "status": "paid",
+          "deliverableUrl": "https://github.com/Vishwateja0411/webdev_crop_mgmt",
+          "deliverableNotes": "go through with github repo ",
+          "submittedAt": "2026-10-28T06:59:00.588Z",
+          "approvedAt": "2026-10-28T07:21:07.689Z",
+          "paidAt": "2026-10-28T07:21:07.689Z"
+        },
+        {
+          "id": "ms-1793169940059-1",
+          "contractId": "contract-1793169940059",
+          "title": "Milestone 2: Core Components & Interactive Telemetry UI",
+          "description": "",
+          "amount": 1800,
+          "dueDate": "2026-11-30",
+          "status": "in_progress"
+        },
+        {
+          "id": "ms-1793169940059-2",
+          "contractId": "contract-1793169940059",
+          "title": "Milestone 3: Production QA, Security Audit & Deployment",
+          "description": "",
+          "amount": 1500,
+          "dueDate": "2026-12-15",
+          "status": "pending"
+        }
+      ],
+      "createdAt": "2026-10-28T06:45:40.059Z"
+    },
+    {
       "id": "contract-1",
       "projectId": "proj-1",
       "businessId": "bp-1",
@@ -738,6 +1064,56 @@
     }
   ],
   "notifications": [
+    {
+      "id": "notif-1793172067698",
+      "recipientId": "user-1793163369319",
+      "type": "milestone_approved",
+      "title": "Milestone Approved & Paid!",
+      "message": "Your deliverable for \"Milestone 1: Architecture, Data Schemas & Wireframes\" was approved! $1200 has been released.",
+      "link": "/freelancer/contracts/contract-1793169940059",
+      "read": false,
+      "createdAt": "2026-10-28T07:21:07.698Z"
+    },
+    {
+      "id": "notif-1793170740592",
+      "recipientId": "user-1793169312575",
+      "type": "milestone_submitted",
+      "title": "Milestone Submitted for Review",
+      "message": "Deliverables submitted for \"Milestone 1: Architecture, Data Schemas & Wireframes\". Please review and approve.",
+      "link": "/business/contracts/contract-1793169940059",
+      "read": false,
+      "createdAt": "2026-10-28T06:59:00.592Z"
+    },
+    {
+      "id": "notif-1793169940077",
+      "recipientId": "user-1793163369319",
+      "type": "contract_offer",
+      "title": "Contract Offer Received!",
+      "message": "alice's Company sent you a formal contract offer for \"Full Stack developer \" ($3000).",
+      "link": "/freelancer/contracts/contract-1793169940059",
+      "read": true,
+      "createdAt": "2026-10-28T06:45:40.077Z"
+    },
+    {
+      "id": "notif-1793169888054",
+      "recipientId": "user-1793169312575",
+      "type": "proposal_received",
+      "title": "New Proposal Received",
+      "message": "bob submitted a proposal for \"Full Stack developer \".",
+      "link": "/business/projects/proj-1793169386244/proposals",
+      "read": false,
+      "createdAt": "2026-10-28T06:44:48.054Z"
+    },
+    {
+      "id": "notif-1793163618969",
+      "recipientId": "user-business-1",
+      "type": "proposal_received",
+      "title": "New Proposal Received",
+      "message": "bob submitted a proposal for \"AI Analytics Dashboard & Real-Time Customer Insights Hub\".",
+      "link": "/business/projects/proj-1/proposals",
+      "read": false,
+      "createdAt": "2026-10-28T05:00:18.969Z"
+    },
     {
       "id": "notif-1",
       "recipientId": "user-business-1",

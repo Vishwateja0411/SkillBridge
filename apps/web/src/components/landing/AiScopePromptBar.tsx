@@ -346,12 +346,17 @@ export const parseUserPrompt = (input: string): PromptPreset => {
 
 import { api } from '../../services/api';
 
-export const AiScopePromptBar: React.FC = () => {
+export interface AiScopePromptBarProps {
+  role?: 'freelancer' | 'business' | string | null;
+}
+
+export const AiScopePromptBar: React.FC<AiScopePromptBarProps> = ({ role }) => {
   const [promptText, setPromptText] = useState('');
   const [activeScope, setActiveScope] = useState<PromptPreset | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const navigate = useNavigate();
+  const isTalent = role === 'freelancer';
 
   const triggerAnalysis = async (fallbackScope: PromptPreset, customText?: string) => {
     setIsAnalyzing(true);
@@ -425,7 +430,11 @@ export const AiScopePromptBar: React.FC = () => {
 
   const handleBrowseMatches = (scope: PromptPreset) => {
     setIsModalOpen(false);
-    navigate(`/find-freelancers?query=${encodeURIComponent(scope.skills[0] || 'AI')}`);
+    if (isTalent) {
+      navigate(`/projects?query=${encodeURIComponent(scope.skills[0] || 'AI')}`);
+    } else {
+      navigate(`/find-freelancers?query=${encodeURIComponent(scope.skills[0] || 'AI')}`);
+    }
   };
 
   return (
@@ -438,11 +447,11 @@ export const AiScopePromptBar: React.FC = () => {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#38BDF8]/15 via-[#818CF8]/15 to-[#C9A24B]/15 border border-[#38BDF8]/30">
               <Sparkles className="w-3.5 h-3.5 text-[#38BDF8] animate-pulse" />
               <span className="text-[11px] font-semibold tracking-wide text-[#E5CB86] uppercase">
-                AI Project Co-Pilot & Matching Engine
+                {isTalent ? 'AI Contract Matcher & Scoping Engine' : 'AI Project Co-Pilot & Matching Engine'}
               </span>
             </div>
             <span className="text-[11px] text-[#BFD0C6] hidden sm:inline">
-              Instant Scope • Milestones • Talent Ranking
+              {isTalent ? 'Match Your Skills • Scope Proposals • Instant Escrow' : 'Instant Scope • Milestones • Talent Ranking'}
             </span>
           </div>
 
@@ -455,7 +464,11 @@ export const AiScopePromptBar: React.FC = () => {
                   rows={2}
                   value={promptText}
                   onChange={(e) => setPromptText(e.target.value)}
-                  placeholder="Describe your vision in plain English (e.g. 'I need an autonomous customer support agent' or 'tell me about full stack')..."
+                  placeholder={
+                    isTalent
+                      ? "Describe projects you want to work on (e.g. 'Remote Next.js and AI agent contracts over $3k' or 'Enterprise design system gigs')..."
+                      : "Describe your vision in plain English (e.g. 'I need an autonomous customer support agent' or 'tell me about full stack')..."
+                  }
                   className="w-full bg-transparent text-xs sm:text-sm text-[#F6F1E4] placeholder:text-[#9DB5A8] focus:outline-none resize-none leading-relaxed"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' && !e.shiftKey) {
@@ -475,34 +488,18 @@ export const AiScopePromptBar: React.FC = () => {
                   {isAnalyzing ? (
                     <>
                       <div className="w-4 h-4 border-2 border-[#072A20] border-t-transparent rounded-full animate-spin" />
-                      <span>Synthesizing Scope...</span>
+                      <span>{isTalent ? 'Finding Matching Contracts...' : 'Synthesizing Scope...'}</span>
                     </>
                   ) : (
                     <>
                       <Sparkles className="w-4 h-4" />
-                      <span>Generate Scope</span>
+                      <span>{isTalent ? 'Find Matches & Scope' : 'Generate Scope'}</span>
                     </>
                   )}
                 </button>
               </div>
             </div>
           </form>
-
-          {/* Quick Idea Chips (Botpool-inspired) */}
-          <div className="mt-3 flex flex-wrap items-center gap-1.5">
-            <span className="text-[11px] text-[#9DB5A8] mr-1">Try one-click prompt:</span>
-            {PRESET_PROMPTS.map((preset) => (
-              <button
-                key={preset.label}
-                type="button"
-                onClick={() => handleSelectPreset(preset)}
-                className="inline-flex items-center gap-1 text-[11px] px-2.5 py-0.5 rounded-full bg-[#072A20] hover:bg-[#114A39] border border-[#1F5A46] hover:border-[#38BDF8] text-[#BFD0C6] hover:text-[#F6F1E4] transition-all hover:-translate-y-0.5"
-              >
-                <span>{preset.icon}</span>
-                <span>{preset.label}</span>
-              </button>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -720,14 +717,20 @@ export const AiScopePromptBar: React.FC = () => {
                   onClick={() => handleBrowseMatches(activeScope)}
                   className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-medium border border-[#38BDF8]/50 hover:bg-[#38BDF8]/10 text-[#38BDF8] transition-all"
                 >
-                  Browse Matching Talent
+                  {isTalent ? 'Browse Matching Projects' : 'Browse Matching Talent'}
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleLaunchProject(activeScope)}
+                  onClick={() => {
+                    if (isTalent) {
+                      handleBrowseMatches(activeScope);
+                    } else {
+                      handleLaunchProject(activeScope);
+                    }
+                  }}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm bg-[#C9A24B] hover:bg-[#E5CB86] text-[#072A20] transition-all shadow-md hover:scale-[1.02]"
                 >
-                  <span>Post Project with this AI Scope</span>
+                  <span>{isTalent ? 'Find Projects for this Scope' : 'Post Project with this AI Scope'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

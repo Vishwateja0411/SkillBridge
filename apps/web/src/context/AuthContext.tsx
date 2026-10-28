@@ -7,8 +7,8 @@ interface AuthContextType {
   profile: FreelancerProfile | BusinessProfile | null;
   token: string | null;
   isLoading: boolean;
-  login: (email: string, pass: string) => Promise<void>;
-  register: (data: { name: string; email: string; password: string; role: 'freelancer' | 'business' }) => Promise<void>;
+  login: (email: string, pass: string) => Promise<User | undefined>;
+  register: (data: { name: string; email: string; password: string; role: 'freelancer' | 'business' }) => Promise<User | undefined>;
   logout: () => void;
   quickLoginAs: (role: 'business' | 'freelancer' | 'admin') => Promise<void>;
   refreshMe: () => Promise<void>;
@@ -28,6 +28,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsLoading(false);
         return;
       }
+
       const res = await api.getMe();
       if (res.success) {
         setUser(res.user);
@@ -46,24 +47,28 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     fetchCurrentUser();
   }, []);
 
-  const login = async (email: string, pass: string) => {
+  const login = async (email: string, pass: string): Promise<User | undefined> => {
     const res = await api.login({ email, password: pass });
     if (res.success) {
       localStorage.setItem('sb_token', res.token);
       setToken(res.token);
       setUser(res.user);
       setProfile(res.profile);
+      return res.user;
     }
+    return undefined;
   };
 
-  const register = async (data: { name: string; email: string; password: string; role: 'freelancer' | 'business' }) => {
+  const register = async (data: { name: string; email: string; password: string; role: 'freelancer' | 'business' }): Promise<User | undefined> => {
     const res = await api.register(data);
     if (res.success) {
       localStorage.setItem('sb_token', res.token);
       setToken(res.token);
       setUser(res.user);
       await refreshMe();
+      return res.user;
     }
+    return undefined;
   };
 
   const logout = () => {

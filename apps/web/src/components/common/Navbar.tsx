@@ -17,13 +17,12 @@ import {
 
 
 export const Navbar: React.FC = () => {
-  const { user, logout, quickLoginAs } = useAuth();
+  const { user, logout } = useAuth();
   const { notifications, unreadNotifCount, markNotifRead, markAllNotifsRead } = useSocket();
   const navigate = useNavigate();
   const location = useLocation();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [demoDropdownOpen, setDemoDropdownOpen] = useState(false);
   const [notifDropdownOpen, setNotifDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -41,14 +40,6 @@ export const Navbar: React.FC = () => {
     if (user.role === 'business') return '/business/dashboard';
     if (user.role === 'admin') return '/admin/dashboard';
     return '/';
-  };
-
-  const handleDemoSwitch = async (role: 'business' | 'freelancer' | 'admin') => {
-    setDemoDropdownOpen(false);
-    await quickLoginAs(role);
-    if (role === 'freelancer') navigate('/freelancer/dashboard');
-    else if (role === 'business') navigate('/business/dashboard');
-    else if (role === 'admin') navigate('/admin/dashboard');
   };
 
   const navLinks = [
@@ -120,63 +111,6 @@ export const Navbar: React.FC = () => {
 
           {/* Right Side Actions */}
           <div className="hidden md:flex items-center gap-4">
-            {/* Quiet Demo Switcher */}
-            <div className="relative">
-              <button
-                onClick={() => setDemoDropdownOpen(!demoDropdownOpen)}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-[6px] text-xs font-normal text-[#BFD0C6] hover:text-[#E5CB86] bg-[#072A20] hover:bg-[#114A39] border border-[#1F5A46] transition-colors focus-visible:ring-1 focus-visible:ring-[#C9A24B]"
-                title="Switch demo persona quietly"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B]" />
-                <span>Demo</span>
-                <ChevronDown className="w-3 h-3 text-[#9DB5A8]" />
-              </button>
-
-              {demoDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-64 bg-[#072A20] rounded-[8px] border border-[#1F5A46] py-2 z-50 shadow-2xl">
-                  <div className="px-3 py-1 text-[10px] font-semibold text-[#9DB5A8] uppercase tracking-wider">
-                    Instant Demo Persona
-                  </div>
-                  <button
-                    onClick={() => handleDemoSwitch('business')}
-                    className="w-full text-left px-3 py-2 text-xs hover:bg-[#114A39] flex items-center justify-between text-[#F6F1E4]"
-                  >
-                    <div>
-                      <div className="font-medium text-[#F6F1E4]">Alex Chen (Business)</div>
-                      <div className="text-[#9DB5A8] text-[11px]">TechVentures AI • Client</div>
-                    </div>
-                    <span className="text-[10px] bg-[#114A39] text-[#E5CB86] border border-[#1F5A46] px-2 py-0.5 rounded-[4px]">
-                      Client
-                    </span>
-                  </button>
-                  <button
-                    onClick={() => handleDemoSwitch('freelancer')}
-                    className="w-full text-left px-3 py-2 text-xs hover:bg-[#114A39] flex items-center justify-between text-[#F6F1E4]"
-                  >
-                    <div>
-                      <div className="font-medium text-[#F6F1E4]">Sarah Jenkins (Freelancer)</div>
-                      <div className="text-[#9DB5A8] text-[11px]">Senior Full-Stack & UI</div>
-                    </div>
-                    <span className="text-[10px] bg-[#114A39] text-[#7BC49A] border border-[#1F5A46] px-2 py-0.5 rounded-[4px]">
-                      Talent
-                    </span>
-                  </button>
-                  <button
-                    onClick={() => handleDemoSwitch('admin')}
-                    className="w-full text-left px-3 py-2 text-xs hover:bg-[#114A39] flex items-center justify-between text-[#F6F1E4]"
-                  >
-                    <div>
-                      <div className="font-medium text-[#F6F1E4]">Platform Admin</div>
-                      <div className="text-[#9DB5A8] text-[11px]">Disputes & Audits</div>
-                    </div>
-                    <span className="text-[10px] bg-[#114A39] text-[#E5CB86] border border-[#1F5A46] px-2 py-0.5 rounded-[4px]">
-                      Admin
-                    </span>
-                  </button>
-                </div>
-              )}
-            </div>
-
             {/* Authenticated user menu */}
             {user ? (
               <div className="flex items-center gap-3">

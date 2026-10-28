@@ -28,26 +28,30 @@ import { DepthNodeNetwork } from '../../components/landing/DepthNodeNetwork';
 import { Hero3DCardStack } from '../../components/landing/Hero3DCardStack';
 import { TiltCard } from '../../components/common/TiltCard';
 import { AiScopePromptBar } from '../../components/landing/AiScopePromptBar';
+import { useAuth } from '../../context/AuthContext';
 
 export const LandingPage: React.FC = () => {
+  const { user } = useAuth();
+  const isTalent = user?.role === 'freelancer';
+  const isClient = user?.role === 'business';
+
   const [searchQuery, setSearchQuery] = useState('');
   const [freelancers, setFreelancers] = useState<FreelancerProfile[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [workflowTab, setWorkflowTab] = useState<'business' | 'freelancer'>('business');
+  const [workflowTab, setWorkflowTab] = useState<'business' | 'freelancer'>(
+    user?.role === 'freelancer' ? 'freelancer' : 'business'
+  );
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const navigate = useNavigate();
 
-  const trendingAiTags = [
-    { label: 'Voice AI Concierge', icon: '🎙️', skill: 'Twilio' },
-    { label: 'Autonomous Agents', icon: '🤖', skill: 'LangChain' },
-    { label: 'Next.js 15 SaaS', icon: '⚡', skill: 'Next.js' },
-    { label: 'n8n & Automations', icon: '🔄', skill: 'n8n' },
-    { label: 'Vector RAG & LLMs', icon: '🧠', skill: 'Python' },
-    { label: 'Design Systems', icon: '🎨', skill: 'Figma' },
-    { label: 'Cloud MLOps', icon: '☁️', skill: 'AWS' },
-    { label: 'AI Guardrails', icon: '🛡️', skill: 'Security' },
-  ];
+  useEffect(() => {
+    if (user?.role === 'freelancer') {
+      setWorkflowTab('freelancer');
+    } else if (user?.role === 'business') {
+      setWorkflowTab('business');
+    }
+  }, [user?.role]);
 
   useEffect(() => {
     api.getFreelancers().then((res) => {
@@ -124,7 +128,11 @@ export const LandingPage: React.FC = () => {
               >
                 <Sparkles className="w-3.5 h-3.5 text-[#38BDF8]" />
                 <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#E5CB86]">
-                  AI-POWERED MATCHING • MILESTONE ESCROW
+                  {isTalent
+                    ? 'TALENT WORKSPACE • ESCROW-PROTECTED CONTRACTS • 5% FLAT FEE'
+                    : isClient
+                    ? 'CLIENT PORTAL • AI-POWERED MATCHING • GUARANTEED ESCROW'
+                    : 'AI-POWERED MATCHING • MILESTONE ESCROW'}
                 </span>
               </motion.div>
 
@@ -135,9 +143,25 @@ export const LandingPage: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
                 className="font-serif text-4xl sm:text-5xl lg:text-[48px] xl:text-[54px] font-normal text-[#F6F1E4] leading-[1.08] tracking-tight"
               >
-                Hire with confidence.{' '}
-                <span className="italic text-[#E5CB86] font-normal">Work</span>{' '}
-                with clarity.
+                {isTalent ? (
+                  <>
+                    Work with freedom.{' '}
+                    <span className="italic text-[#E5CB86] font-normal">Earn</span>{' '}
+                    with certainty.
+                  </>
+                ) : isClient ? (
+                  <>
+                    Build elite teams.{' '}
+                    <span className="italic text-[#E5CB86] font-normal">Scale</span>{' '}
+                    with clarity.
+                  </>
+                ) : (
+                  <>
+                    Hire with confidence.{' '}
+                    <span className="italic text-[#E5CB86] font-normal">Work</span>{' '}
+                    with clarity.
+                  </>
+                )}
               </motion.h1>
 
               {/* Supporting Text */}
@@ -147,7 +171,11 @@ export const LandingPage: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 className="text-sm sm:text-base text-[#BFD0C6] font-normal leading-relaxed max-w-xl"
               >
-                The enterprise talent marketplace for AI and engineering. Transparent 6-factor compatibility matching, conversational project scoping, and guaranteed milestone escrow safety.
+                {isTalent
+                  ? `Welcome back, ${user?.name || 'Talent'}. Browse pre-funded AI engineering and product contracts matched to your skills, with 100% upfront escrow protection and only 5% platform fee.`
+                  : isClient
+                  ? `Welcome back, ${user?.name || 'Client'}. Scope complex technical deliverables in minutes, match with verified top 3% AI engineers, and approve milestones with escrow safety.`
+                  : 'The enterprise talent marketplace for AI and engineering. Transparent 6-factor compatibility matching, conversational project scoping, and guaranteed milestone escrow safety.'}
               </motion.p>
 
               {/* CTA Buttons with Hover Light Reflections */}
@@ -157,19 +185,55 @@ export const LandingPage: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
                 className="pt-1 flex flex-wrap items-center gap-3"
               >
-                <Link
-                  to="/find-freelancers"
-                  className="relative overflow-hidden group px-5 py-2.5 rounded-[8px] font-medium text-xs sm:text-sm bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
-                >
-                  <span className="relative z-10">Explore Talent</span>
-                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-                </Link>
-                <Link
-                  to="/projects"
-                  className="relative overflow-hidden group px-5 py-2.5 rounded-[8px] font-medium text-xs sm:text-sm bg-transparent hover:bg-[#114A39] text-[#F6F1E4] border border-[#2B6D56] hover:border-[#C9A24B] transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <span className="relative z-10">Find Projects</span>
-                </Link>
+                {isTalent ? (
+                  <>
+                    <Link
+                      to="/projects"
+                      className="relative overflow-hidden group px-5 py-2.5 rounded-[8px] font-medium text-xs sm:text-sm bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Browse Open Contracts</span>
+                      <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                    </Link>
+                    <Link
+                      to="/freelancer/dashboard"
+                      className="relative overflow-hidden group px-5 py-2.5 rounded-[8px] font-medium text-xs sm:text-sm bg-transparent hover:bg-[#114A39] text-[#F6F1E4] border border-[#2B6D56] hover:border-[#C9A24B] transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Go to My Talent Hub &rarr;</span>
+                    </Link>
+                  </>
+                ) : isClient ? (
+                  <>
+                    <Link
+                      to="/find-freelancers"
+                      className="relative overflow-hidden group px-5 py-2.5 rounded-[8px] font-medium text-xs sm:text-sm bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Explore Talent</span>
+                      <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                    </Link>
+                    <Link
+                      to="/business/dashboard"
+                      className="relative overflow-hidden group px-5 py-2.5 rounded-[8px] font-medium text-xs sm:text-sm bg-transparent hover:bg-[#114A39] text-[#F6F1E4] border border-[#2B6D56] hover:border-[#C9A24B] transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Client Dashboard &rarr;</span>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/find-freelancers"
+                      className="relative overflow-hidden group px-5 py-2.5 rounded-[8px] font-medium text-xs sm:text-sm bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Explore Talent</span>
+                      <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                    </Link>
+                    <Link
+                      to="/projects"
+                      className="relative overflow-hidden group px-5 py-2.5 rounded-[8px] font-medium text-xs sm:text-sm bg-transparent hover:bg-[#114A39] text-[#F6F1E4] border border-[#2B6D56] hover:border-[#C9A24B] transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Find Projects</span>
+                    </Link>
+                  </>
+                )}
                 <a
                   href="#how-it-works"
                   className="relative overflow-hidden group px-4 py-2.5 rounded-[8px] font-medium text-xs sm:text-sm text-[#BFD0C6] hover:text-[#E5CB86] transition-colors"
@@ -185,13 +249,13 @@ export const LandingPage: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="pt-2 w-full"
               >
-                <AiScopePromptBar />
+                <AiScopePromptBar role={user?.role} />
               </motion.div>
             </div>
 
             {/* Right Column: 3D Tilt Card Composition */}
             <div className="lg:col-span-5 relative">
-              <Hero3DCardStack />
+              <Hero3DCardStack role={user?.role} />
             </div>
           </div>
         </div>
@@ -201,44 +265,38 @@ export const LandingPage: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 divide-y-0 sm:divide-x divide-[#1F5A46] gap-y-3 sm:gap-y-0">
               <div className="px-2 sm:px-4 lg:px-6 first:pl-0">
-                <h4 className="font-serif text-base sm:text-lg font-medium text-[#E5CB86] leading-snug">Verified talent</h4>
-                <p className="text-[11px] text-[#BFD0C6] mt-0.5 leading-normal">Identity and skills checked</p>
+                <h4 className="font-serif text-base sm:text-lg font-medium text-[#E5CB86] leading-snug">
+                  {isTalent ? 'Verified clients' : 'Verified talent'}
+                </h4>
+                <p className="text-[11px] text-[#BFD0C6] mt-0.5 leading-normal">
+                  {isTalent ? 'Pre-vetted budgets & enterprises' : 'Identity and skills checked'}
+                </p>
               </div>
               <div className="px-2 sm:px-4 lg:px-6">
-                <h4 className="font-serif text-base sm:text-lg font-medium text-[#E5CB86] leading-snug">Weighted matching</h4>
-                <p className="text-[11px] text-[#BFD0C6] mt-0.5 leading-normal">Skills & track record scored</p>
+                <h4 className="font-serif text-base sm:text-lg font-medium text-[#E5CB86] leading-snug">
+                  {isTalent ? 'Direct invitations' : 'Weighted matching'}
+                </h4>
+                <p className="text-[11px] text-[#BFD0C6] mt-0.5 leading-normal">
+                  {isTalent ? 'AI matches sent to your inbox' : 'Skills & track record scored'}
+                </p>
               </div>
               <div className="px-2 sm:px-4 lg:px-6">
-                <h4 className="font-serif text-base sm:text-lg font-medium text-[#E5CB86] leading-snug">Milestone safe</h4>
-                <p className="text-[11px] text-[#BFD0C6] mt-0.5 leading-normal">Pay as work is approved</p>
+                <h4 className="font-serif text-base sm:text-lg font-medium text-[#E5CB86] leading-snug">
+                  {isTalent ? 'Guaranteed escrow' : 'Milestone safe'}
+                </h4>
+                <p className="text-[11px] text-[#BFD0C6] mt-0.5 leading-normal">
+                  {isTalent ? '100% funded before work begins' : 'Pay as work is approved'}
+                </p>
               </div>
               <div className="px-2 sm:px-4 lg:px-6 last:pr-0">
-                <h4 className="font-serif text-base sm:text-lg font-medium text-[#E5CB86] leading-snug">Transparent fee</h4>
-                <p className="text-[11px] text-[#BFD0C6] mt-0.5 leading-normal">Shown before you commit</p>
+                <h4 className="font-serif text-base sm:text-lg font-medium text-[#E5CB86] leading-snug">
+                  {isTalent ? '5% platform fee' : 'Transparent fee'}
+                </h4>
+                <p className="text-[11px] text-[#BFD0C6] mt-0.5 leading-normal">
+                  {isTalent ? 'Keep 95% of every dollar earned' : 'Shown before you commit'}
+                </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TRENDING AI CAPABILITY STRIP (Botpool-inspired) */}
-      <section className="bg-[#072A20] border-b border-[#1F5A46] py-3.5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-2 text-xs text-[#BFD0C6] shrink-0">
-            <span className="flex h-2 w-2 rounded-full bg-[#38BDF8] animate-ping" />
-            <span className="font-semibold text-[#E5CB86] uppercase tracking-wider text-[11px]">Trending AI Capabilities:</span>
-          </div>
-          <div className="flex items-center gap-2 overflow-x-auto w-full no-scrollbar py-1">
-            {trendingAiTags.map((tag) => (
-              <button
-                key={tag.label}
-                onClick={() => navigate(`/find-freelancers?query=${encodeURIComponent(tag.skill)}`)}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] bg-[#114A39] hover:bg-[#114A39]/80 border border-[#1F5A46] hover:border-[#38BDF8] text-[#F6F1E4] whitespace-nowrap transition-all hover:-translate-y-0.5 shadow-sm"
-              >
-                <span>{tag.icon}</span>
-                <span>{tag.label}</span>
-              </button>
-            ))}
           </div>
         </div>
       </section>
@@ -753,26 +811,77 @@ export const LandingPage: React.FC = () => {
                 HERITAGE STANDARD
               </div>
               <h2 className="font-serif text-3xl sm:text-5xl font-medium leading-tight text-[#F6F1E4]">
-                Ready to work with <span className="italic text-[#E5CB86]">absolute</span> clarity?
+                {isTalent ? (
+                  <>
+                    Ready to take on your next{' '}
+                    <span className="italic text-[#E5CB86]">high-impact</span> contract?
+                  </>
+                ) : (
+                  <>
+                    Ready to work with <span className="italic text-[#E5CB86]">absolute</span> clarity?
+                  </>
+                )}
               </h2>
               <p className="text-xs sm:text-sm text-[#BFD0C6] leading-relaxed">
-                Join verified businesses and dedicated professionals collaborating through structured milestone escrow on SkillBridge.
+                {isTalent
+                  ? 'Connect with verified enterprise engineering teams, submit structured proposals, and receive milestone payouts with 100% upfront escrow safety.'
+                  : isClient
+                  ? 'Post your requirements, match with pre-vetted AI specialists in minutes, and collaborate safely through milestone escrow.'
+                  : 'Join verified businesses and dedicated professionals collaborating through structured milestone escrow on SkillBridge.'}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-                <Link
-                  to="/register"
-                  className="relative overflow-hidden group w-full sm:w-auto px-7 py-3 rounded-[6px] font-semibold text-sm bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
-                >
-                  <span className="relative z-10">Get started</span>
-                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-                </Link>
-                <Link
-                  to="/find-freelancers"
-                  className="relative overflow-hidden group w-full sm:w-auto px-7 py-3 rounded-[6px] font-medium text-sm border border-[#2B6D56] hover:border-[#C9A24B] text-[#F6F1E4] hover:bg-[#072A20] transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <span className="relative z-10">Explore talent</span>
-                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
-                </Link>
+                {isTalent ? (
+                  <>
+                    <Link
+                      to="/projects"
+                      className="relative overflow-hidden group w-full sm:w-auto px-7 py-3 rounded-[6px] font-semibold text-sm bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Browse Open Contracts</span>
+                      <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                    </Link>
+                    <Link
+                      to="/freelancer/dashboard"
+                      className="relative overflow-hidden group w-full sm:w-auto px-7 py-3 rounded-[6px] font-medium text-sm border border-[#2B6D56] hover:border-[#C9A24B] text-[#F6F1E4] hover:bg-[#072A20] transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Go to My Talent Hub &rarr;</span>
+                      <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+                    </Link>
+                  </>
+                ) : isClient ? (
+                  <>
+                    <Link
+                      to="/business/dashboard"
+                      className="relative overflow-hidden group w-full sm:w-auto px-7 py-3 rounded-[6px] font-semibold text-sm bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Post a New Project</span>
+                      <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                    </Link>
+                    <Link
+                      to="/find-freelancers"
+                      className="relative overflow-hidden group w-full sm:w-auto px-7 py-3 rounded-[6px] font-medium text-sm border border-[#2B6D56] hover:border-[#C9A24B] text-[#F6F1E4] hover:bg-[#072A20] transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Explore Talent Directory</span>
+                      <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/register"
+                      className="relative overflow-hidden group w-full sm:w-auto px-7 py-3 rounded-[6px] font-semibold text-sm bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Get started</span>
+                      <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                    </Link>
+                    <Link
+                      to="/find-freelancers"
+                      className="relative overflow-hidden group w-full sm:w-auto px-7 py-3 rounded-[6px] font-medium text-sm border border-[#2B6D56] hover:border-[#C9A24B] text-[#F6F1E4] hover:bg-[#072A20] transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                      <span className="relative z-10">Explore talent</span>
+                      <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </motion.div>

@@ -35,7 +35,7 @@ export const BusinessDashboard: React.FC = () => {
   }, []);
 
   const totalSpent = contracts.reduce((s, c) => s + (c.totalAmount || 0), 0);
-  const activeContracts = contracts.filter((c) => c.status === 'active');
+  const activeContracts = contracts.filter((c) => c.status === 'active' || c.status === 'offer_sent');
   const totalProposals = projects.reduce((s, p) => s + (p.proposalsCount || 0), 0);
 
   return (

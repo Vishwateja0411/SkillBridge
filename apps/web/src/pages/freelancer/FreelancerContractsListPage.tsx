@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckSquare, ArrowRight, ShieldCheck, ChevronRight } from 'lucide-react';
 import { api } from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
 import { Contract } from '@skillbridge/shared';
 
 export const FreelancerContractsListPage: React.FC = () => {
+  const { user } = useAuth();
   const [contracts, setContracts] = useState<Contract[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const isBusiness = user?.role === 'business';
+  const basePath = isBusiness ? '/business/contracts' : '/freelancer/contracts';
 
   useEffect(() => {
     api.getContracts().then((res) => {
@@ -55,14 +60,18 @@ export const FreelancerContractsListPage: React.FC = () => {
                     </div>
 
                     <Link
-                      to={`/freelancer/contracts/${c.id}`}
+                      to={`${basePath}/${c.id}`}
                       className="font-serif text-xl font-medium text-[#F6F1E4] hover:text-[#E5CB86] block transition-colors"
                     >
                       {c.title}
                     </Link>
 
                     <div className="text-xs text-[#BFD0C6]">
-                      Client: <span className="font-medium text-[#F6F1E4]">{c.business?.companyName || 'TechVentures AI'}</span>
+                      {isBusiness ? (
+                        <>Talent: <span className="font-medium text-[#F6F1E4]">{c.freelancer?.user?.name || 'Assigned Specialist'}</span></>
+                      ) : (
+                        <>Client: <span className="font-medium text-[#F6F1E4]">{c.business?.companyName || 'TechVentures AI'}</span></>
+                      )}
                     </div>
                   </div>
 
@@ -82,7 +91,7 @@ export const FreelancerContractsListPage: React.FC = () => {
                 <div className="pt-2 flex items-center justify-between text-xs">
                   <span className="text-[#9DB5A8] font-medium">{progress}% Milestone Progress</span>
                   <Link
-                    to={`/freelancer/contracts/${c.id}`}
+                    to={`${basePath}/${c.id}`}
                     className="px-4 py-2 rounded-[6px] bg-[#C9A24B] hover:bg-[#E5CB86] text-[#0B3D2E] font-medium text-xs transition-colors flex items-center gap-1.5"
                   >
                     <span>Open Workspace</span>

@@ -39,6 +39,18 @@ export const DashboardLayout: React.FC = () => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  // Role-based route guard: ensure users stay in their own role workspace
+  React.useEffect(() => {
+    if (!user) return;
+    if (user.role === 'freelancer' && location.pathname.startsWith('/business')) {
+      navigate('/freelancer/dashboard', { replace: true });
+    } else if (user.role === 'business' && location.pathname.startsWith('/freelancer')) {
+      navigate('/business/dashboard', { replace: true });
+    } else if (user.role !== 'admin' && location.pathname.startsWith('/admin')) {
+      navigate(user.role === 'freelancer' ? '/freelancer/dashboard' : '/business/dashboard', { replace: true });
+    }
+  }, [user, location.pathname, navigate]);
+
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0B3D2E] text-[#F6F1E4] p-4">
@@ -236,34 +248,11 @@ export const DashboardLayout: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Quick Demo Switcher */}
-            <div className="hidden sm:flex items-center gap-1 bg-[#072A20] p-1 rounded-[6px] border border-[#1F5A46] text-xs">
-              <span className="px-2 text-[10px] text-[#9DB5A8] font-semibold uppercase">Demo:</span>
-              <button
-                onClick={() => quickLoginAs('business')}
-                className={`px-2 py-0.5 rounded-[4px] text-xs transition-colors ${
-                  user.role === 'business' ? 'bg-[#114A39] text-[#E5CB86] font-semibold' : 'text-[#BFD0C6] hover:text-[#F6F1E4]'
-                }`}
-              >
-                Client
-              </button>
-              <button
-                onClick={() => quickLoginAs('freelancer')}
-                className={`px-2 py-0.5 rounded-[4px] text-xs transition-colors ${
-                  user.role === 'freelancer' ? 'bg-[#114A39] text-[#E5CB86] font-semibold' : 'text-[#BFD0C6] hover:text-[#F6F1E4]'
-                }`}
-              >
-                Talent
-              </button>
-              <button
-                onClick={() => quickLoginAs('admin')}
-                className={`px-2 py-0.5 rounded-[4px] text-xs transition-colors ${
-                  user.role === 'admin' ? 'bg-[#114A39] text-[#E5CB86] font-semibold' : 'text-[#BFD0C6] hover:text-[#F6F1E4]'
-                }`}
-              >
-                Admin
-              </button>
-            </div>
+            {/* Verified Account Type Badge */}
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#072A20] text-[#E5CB86] border border-[#1F5A46]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24B]" />
+              <span className="capitalize">{user.role === 'freelancer' ? 'Talent Account' : user.role === 'business' ? 'Client Account' : 'Admin'}</span>
+            </span>
 
             {/* Notification Bell */}
             <Link

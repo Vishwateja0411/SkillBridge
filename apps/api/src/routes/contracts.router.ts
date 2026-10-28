@@ -155,6 +155,14 @@ router.put('/:id/milestones/:milestoneId/submit', requireAuth, (req: Authenticat
     submittedAt: new Date().toISOString(),
   });
 
+  // Automatically activate contract if it was in offer_sent state
+  if (contract.status === 'offer_sent') {
+    dbStore.updateContract(contract.id, {
+      status: 'active',
+      startDate: new Date().toISOString(),
+    });
+  }
+
   // Notify business
   if (contract.business?.userId) {
     dbStore.createNotification({
